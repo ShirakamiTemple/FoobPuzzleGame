@@ -68,4 +68,15 @@ public static class Utility
             (collection[randomIndex], collection[i]) = (collection[i], collection[randomIndex]);
         }
     }
+
+    /// <summary>
+    /// Checks quaternions for approximate equality
+    /// </summary>
+    /// <param name="q1"></param>
+    /// <param name="q2"></param>
+    /// <returns></returns>
+    public static bool Approximately(Quaternion q1, Quaternion q2)
+    {
+        return Quaternion.Dot(q1, q2) > 1f - 0.0000004f;
+    }
 }
