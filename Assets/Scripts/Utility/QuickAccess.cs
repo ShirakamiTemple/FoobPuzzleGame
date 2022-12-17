@@ -18,4 +18,9 @@ public static class QuickAccess
     {
         EditorSceneManager.OpenScene("Assets/Scenes/MainMenu.unity");
     }
+    [MenuItem("QuickAccess/Scenes/Map Screen", false, 3)]
+    public static void OpenMapScreenScene()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/MapScreen.unity");
+    }
 }
