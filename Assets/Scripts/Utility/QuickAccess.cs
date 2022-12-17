@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 //***
 // Author: Nate
 // Description: QuickAccess adds a quick access menu for scene switching to the toolbar
@@ -24,3 +25,4 @@ public static class QuickAccess
         EditorSceneManager.OpenScene("Assets/Scenes/MapScreen.unity");
     }
 }
+#endif
