@@ -1,52 +1,44 @@
-using System;
+//***
+// Author: Nate
+// Description: DragObject allows an object to be dragged with the mouse
+//***
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerMoveHandler, IPointerExitHandler
 {
-    [SerializeField] private float speed;
-    private Vector3 _dragOffset;
-    private Camera _cam;
-    private Vector3 _mousePos;
-    private bool _isDragging, _shouldRotate;
-
-    private Quaternion _newAngle;
-    private Quaternion _oldAngle;
+    [SerializeField] private float dragSpeed;
+    [SerializeField] private float rotationSpeed;
+    private Vector3 _dragOffset, _mousePos;
+    private bool _isDragging, _leftClickHeld, _shouldRotate;
+    private bool _canDrag = true;
+    private Quaternion _newAngle, _oldAngle;
     private Transform _myTransform;
     private float _rotationTime;
-    
+
+    private float _cellSize = 150f;
+    private RectTransform _myRect;
+
     private void Start()
     {
-        _cam = Camera.main;
         _myTransform = transform;
+        _myRect = GetComponent<RectTransform>();
     }
 
     private void Update()
     {
         HandleObjectDrag();
-        //HandleObjectRotation();
-    }
-
-    private void FixedUpdate()
-    {
         HandleObjectRotation();
-    }
-
-    private void HandleObjectDrag()
-    {
-        if (!_isDragging) return;
-        
-        Vector3 mousePos = GetMousePos();
-        transform.position = Vector3.Lerp(transform.position, mousePos , speed * Time.deltaTime);
     }
 
     private void HandleObjectRotation()
     {
         if (!_shouldRotate) return;
         
-        _myTransform.rotation = Quaternion.Slerp(_oldAngle, _newAngle, _rotationTime);
-        _rotationTime += Time.deltaTime * speed;
+        _myTransform.rotation = Quaternion.Lerp(_oldAngle, _newAngle, _rotationTime);
+        _rotationTime += Time.deltaTime * rotationSpeed;
         
         if (Utility.Approximately(_oldAngle, _newAngle))
         {
@@ -54,16 +46,8 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    private Vector3 GetMousePos()
+    public Vector3 GetMousePos()
     {
-        // uncomment this stuff and return _mousePos if you want to use sprites instead of canvas images
-        // _mousePos = Mouse.current.position.ReadValue();
-        //
-        // //Moving a 2d object, so the z needs to be opposite of the camera
-        // _mousePos.z = -_cam.transform.position.z;    
-        //
-        // _mousePos = _cam.ScreenToWorldPoint(_mousePos);
-
         return Mouse.current.position.ReadValue();
     }
 
@@ -76,7 +60,9 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void HandleLeftClick(PointerEventData data)
     {
         if (data.button != PointerEventData.InputButton.Left) return;
-        _isDragging = true;
+        
+        _myRect.SetAsLastSibling();
+        _leftClickHeld = true;
     }
 
     private void HandleRightClick(PointerEventData data)
@@ -92,6 +78,52 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        _isDragging = false;
+        
+        _leftClickHeld = false;
+    }
+
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        // if (IsMovementLocked) return;
+        // if (!_leftClickHeld) return;
+        //
+        // if (!_canDrag)
+        // {
+        //     if (Mathf.RoundToInt(Mathf.Abs(Vector3.Distance(GetMousePos(), MovementLockStart))) >= _movementLockBuffer)
+        //     {
+        //         print("distance op");
+        //         _canDrag = true;
+        //     }
+        // }
+    }
+    
+    private void HandleObjectDrag()
+    {
+        if (!_leftClickHeld) return;
+        if (!_canDrag) return;
+        
+        Vector3 mousePos = GetMousePos();
+        //transform.position = Vector3.Lerp(transform.position, mousePos, dragSpeed);
+        transform.position = mousePos;
+        transform.position = new Vector2(Mathf.RoundToInt(transform.position.x / _cellSize) * _cellSize,
+            Mathf.RoundToInt(transform.position.y / _cellSize) * _cellSize);
+    }
+
+    public void SetDrag(bool drag)
+    {
+        _canDrag = drag;
+    }
+
+    public bool CanDrag()
+    {
+        return _canDrag;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // if (IsMovementLocked) return;
+        // if (!_leftClickHeld) return;
+        //
+        // SetDrag(true);
     }
 }

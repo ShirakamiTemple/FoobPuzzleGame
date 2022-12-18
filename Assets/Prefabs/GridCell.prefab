@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8480682040003391476}
   - component: {fileID: 2734554876312358693}
   m_Layer: 0
-  m_Name: Cell 1
+  m_Name: GridCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,5 +98,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 140, y: 140}
   m_EdgeRadius: 0
