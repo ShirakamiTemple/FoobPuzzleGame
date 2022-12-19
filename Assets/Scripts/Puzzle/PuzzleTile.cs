@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class PuzzleTile : MonoBehaviour
 {
+    public bool IsOccupied { get; private set; }
+    
     
 }

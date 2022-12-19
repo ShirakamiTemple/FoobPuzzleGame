@@ -12,4 +12,13 @@ public class PuzzlePiece : MonoBehaviour
     public List<Transform> SnapPoints { get; private set; }
     [field: SerializeField]
     public DragObject Draggable { get; private set; }
+    public Vector3 StartPosition { get; private set; }
+    public Quaternion StartRotation { get; private set; }
+    public bool IsValidated { get; set; }
+
+    private void Awake()
+    {
+        StartPosition = transform.position;
+        StartRotation = transform.rotation;
+    }
 }
