@@ -10,15 +10,14 @@ using UnityEngine.InputSystem;
 public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float snapSpeed;
     private Vector3 _dragOffset, _mousePos;
     private bool _isDragging, _leftClickHeld, _shouldRotate, _shouldReset;
     private bool _canDrag = true;
     private Quaternion _newAngle, _oldAngle;
     private Transform _myTransform;
     private float _rotationTime;
-
-    [SerializeField]
-    private float snapDistance = 7f;
+    [SerializeField] private float snapDistance = 7f;
     
     private PuzzleGrid _grid;
     private PuzzlePiece _piece;
@@ -48,7 +47,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _myTransform.rotation = Quaternion.Lerp(_oldAngle, _piece.StartRotation, _rotationTime);
         _rotationTime += Time.deltaTime * rotationSpeed;
 
-        _myTransform.position = Vector3.Lerp(_myTransform.position, _piece.StartPosition, Time.deltaTime * rotationSpeed);
+        _myTransform.position = Vector3.Lerp(_myTransform.position, _piece.StartPosition, Time.deltaTime * snapSpeed);
 
         if (Vector3.Distance(_myTransform.position, _piece.StartPosition) <= DistanceBuffer &&
             Utility.Approximately(Utility.QuaternionAbs(_myTransform.rotation), Utility.QuaternionAbs(_piece.StartRotation)))
@@ -65,6 +64,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         
         _myTransform.rotation = Quaternion.Lerp(_oldAngle, _newAngle, _rotationTime);
         _rotationTime += Time.deltaTime * rotationSpeed;
+        
         if (Utility.Approximately(Utility.QuaternionAbs(_myTransform.rotation), Utility.QuaternionAbs(_newAngle)))
         {
             _canDrag = true;
@@ -72,7 +72,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    public Vector3 GetMousePos()
+    private static Vector3 GetMousePos()
     {
         return Mouse.current.position.ReadValue();
     }
@@ -86,6 +86,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void HandleLeftClick(PointerEventData data)
     {
         if (data.button != PointerEventData.InputButton.Left) return;
+        if (_shouldReset) return;
         
         transform.SetAsLastSibling();
         _shouldReset = false;
@@ -95,6 +96,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void HandleRightClick(PointerEventData data)
     {
         if (data.button != PointerEventData.InputButton.Right) return;
+        if (_shouldReset) return;
         
         _rotationTime = 0;
         _canDrag = false;
@@ -142,16 +144,6 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 }
             }
         }
-    }
-
-    public void SetDrag(bool drag)
-    {
-        _canDrag = drag;
-    }
-
-    public bool CanDrag()
-    {
-        return _canDrag;
     }
 
     private Vector3 CheckRotation(Transform point)

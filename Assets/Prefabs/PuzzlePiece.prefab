@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
+  snapSpeed: 20
   snapDistance: 5
 --- !u!114 &812428348696501009
 MonoBehaviour:
