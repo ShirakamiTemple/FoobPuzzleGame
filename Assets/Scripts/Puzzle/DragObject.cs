@@ -19,12 +19,17 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     private float _rotationTime;
 
     private float _cellSize = 150f;
-    private RectTransform _myRect;
+
+    private float _snapDistance = 10f;
+
+    private PuzzleGrid _grid;
+    private PuzzlePiece _piece;
 
     private void Start()
     {
+        _piece = GetComponent<PuzzlePiece>();
+        _grid = FindObjectOfType<PuzzleGrid>();
         _myTransform = transform;
-        _myRect = GetComponent<RectTransform>();
     }
 
     private void Update()
@@ -61,14 +66,13 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     {
         if (data.button != PointerEventData.InputButton.Left) return;
         
-        _myRect.SetAsLastSibling();
+        transform.SetAsLastSibling();
         _leftClickHeld = true;
     }
 
     private void HandleRightClick(PointerEventData data)
     {
         if (data.button != PointerEventData.InputButton.Right) return;
-
         _rotationTime = 0;
         _oldAngle = _myTransform.rotation;
         _newAngle = Quaternion.Euler(_myTransform.rotation.eulerAngles + new Vector3(0, 0, 90f));
@@ -84,17 +88,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerMove(PointerEventData eventData)
     {
-        // if (IsMovementLocked) return;
-        // if (!_leftClickHeld) return;
-        //
-        // if (!_canDrag)
-        // {
-        //     if (Mathf.RoundToInt(Mathf.Abs(Vector3.Distance(GetMousePos(), MovementLockStart))) >= _movementLockBuffer)
-        //     {
-        //         print("distance op");
-        //         _canDrag = true;
-        //     }
-        // }
+
     }
     
     private void HandleObjectDrag()
@@ -102,11 +96,22 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         if (!_leftClickHeld) return;
         if (!_canDrag) return;
         
-        Vector3 mousePos = GetMousePos();
-        //transform.position = Vector3.Lerp(transform.position, mousePos, dragSpeed);
-        transform.position = mousePos;
-        transform.position = new Vector2(Mathf.RoundToInt(transform.position.x / _cellSize) * _cellSize,
-            Mathf.RoundToInt(transform.position.y / _cellSize) * _cellSize);
+        transform.position  = GetMousePos();
+        float smallestDistanceSquared = _snapDistance * _snapDistance;
+        foreach (PuzzleTile tile in _grid.Tiles)
+        {
+            foreach (Transform point in _piece.SnapPoints)
+            {
+                if (Vector3.Distance(tile.transform.position, point.position) < smallestDistanceSquared)
+                {
+                    //_canDrag = false;
+                    //print("Point " + point.name + " is close to " + tile.name);
+                    transform.position = tile.transform.position - point.localPosition;
+                    //smallestDistanceSquared = Vector3.Distance(tile.transform.position, point.position);
+                    return;
+                }
+            }
+        }
     }
 
     public void SetDrag(bool drag)
