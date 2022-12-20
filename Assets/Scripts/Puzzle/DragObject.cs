@@ -69,6 +69,18 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             _canDrag = true;
             _shouldRotate = false;
+            if (_piece.IsValidated)
+            {
+                Invoke(nameof(DelayCheckForPieceValidation), 0.1f);
+            }
+        }
+    }
+
+    private void DelayCheckForPieceValidation()
+    {
+        if (!_piece.CheckValidation())
+        {
+            StartObjectReset();
         }
     }
 
@@ -97,7 +109,8 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (data.button != PointerEventData.InputButton.Right) return;
         if (_shouldReset) return;
-        
+
+        //_piece.IsValidated = false;
         _rotationTime = 0;
         _canDrag = false;
         _oldAngle = _myTransform.rotation;
@@ -108,12 +121,15 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        
-        _leftClickHeld = false;
-        
-        //reset object if validation fails
-        StartObjectReset();
 
+        //reset object if validation fails
+        if (!_piece.CheckValidation())
+        {
+            StartObjectReset();
+            _leftClickHeld = false;
+            return;
+        }
+        _leftClickHeld = false;
     }
 
     private void StartObjectReset()
@@ -172,5 +188,10 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 break;
         }
         return temp;
+    }
+
+    public bool LeftClickHeld()
+    {
+        return _leftClickHeld;
     }
 }
