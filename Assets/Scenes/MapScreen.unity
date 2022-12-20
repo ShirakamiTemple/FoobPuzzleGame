@@ -234,6 +234,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
 --- !u!224 &122461267 stripped
@@ -475,6 +487,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
 --- !u!224 &467041322 stripped
@@ -613,6 +637,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
 --- !u!224 &516496787 stripped
@@ -734,6 +770,14 @@ PrefabInstance:
     - target: {fileID: 2679714555938308495, guid: c1fd3eb47723e3f448b0d9aa3ee36f1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244433289393583790, guid: c1fd3eb47723e3f448b0d9aa3ee36f1d, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244433289393583790, guid: c1fd3eb47723e3f448b0d9aa3ee36f1d, type: 3}
+      propertyPath: m_Size.y
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1fd3eb47723e3f448b0d9aa3ee36f1d, type: 3}
@@ -863,6 +907,18 @@ PrefabInstance:
     - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
       propertyPath: m_Name
       value: Tile1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
@@ -1041,6 +1097,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
 --- !u!224 &1294684498 stripped
@@ -1075,6 +1143,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1078402387}
     m_Modifications:
+    - target: {fileID: 2773365971893426035, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773365971893426035, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300465898863816826, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300465898863816826, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230772727023386628, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230772727023386628, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4315867647316428841, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
       propertyPath: m_Name
       value: PuzzlePiece 1
@@ -1171,6 +1263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4315867647316428847, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 5798306844812239419, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
       propertyPath: <SnapPoints>k__BackingField.Array.data[0]
       value: 
@@ -1187,6 +1283,14 @@ PrefabInstance:
       propertyPath: <SnapPoints>k__BackingField.Array.data[3]
       value: 
       objectReference: {fileID: 1302731475}
+    - target: {fileID: 6750845231349733801, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750845231349733801, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
 --- !u!224 &1302731474 stripped
@@ -1324,6 +1428,18 @@ PrefabInstance:
     - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
       propertyPath: m_Name
       value: Tile1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
@@ -1466,6 +1582,18 @@ PrefabInstance:
     - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
       propertyPath: m_Name
       value: Tile1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
@@ -1681,6 +1809,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
 --- !u!224 &1839387794 stripped
@@ -1818,6 +1958,18 @@ PrefabInstance:
     - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
       propertyPath: m_Name
       value: Tile1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035661279389258079, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_TagString
+      value: PuzzleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781594447728177548, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
+      propertyPath: m_Size.y
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350bf8ab83b91844bb0bfa94d529f796, type: 3}
