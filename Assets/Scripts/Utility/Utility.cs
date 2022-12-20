@@ -79,4 +79,19 @@ public static class Utility
     {
         return Quaternion.Dot(q1, q2) > 1f - 0.0000004f;
     }
+
+    public static bool Approximately(Vector3 v1, Vector3 v2)
+    {
+        return Vector3.Dot(v1, v2) > 1f - 0.0000004f;
+    }
+
+    public static Vector3 Vector3Abs(Vector3 vector)
+    {
+        return new Vector3(Mathf.Abs(vector.x), Mathf.Abs(vector.y), Mathf.Abs(vector.z));
+    }
+
+    public static Quaternion QuaternionAbs(Quaternion q)
+    {
+        return new Quaternion(Mathf.Abs(q.x), Mathf.Abs(q.y), Mathf.Abs(q.z), Mathf.Abs(q.w));
+    }
 }
