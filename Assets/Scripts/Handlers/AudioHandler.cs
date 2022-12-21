@@ -3,6 +3,7 @@
 // Description: AudioHandler is a Handler for managing the games audio
 //***
 
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,9 +12,40 @@ public class AudioHandler : Handler<AudioHandler>
     [SerializeField] private AudioMixer mainMixer;
     [SerializeField] private AudioSource musicSource, effectsSource;
 
-    private const string MasterVolume = "MasterVolume";
-    private const string MusicVolume = "MusicVolume";
-    private const string SFXVolume = "SFXVolume";
+    private const string MasterVolumeKey = "MasterVolume";
+    private const string MusicVolumeKey = "MusicVolume";
+    private const string SFXVolumeKey = "SFXVolume";
+    
+    public float MasterVolume { get; set; }
+    public float MusicVolume { get; set; }
+    public float SFXVolume { get; set; }
+    
+    protected override void Awake()
+    {
+        base.Awake();
+        SaveLoadHandler.Instance.Load += AssignAudioValues;
+        SaveLoadHandler.Instance.Save += SaveAudioValues;
+    }
+
+    private void OnDestroy()
+    {
+        SaveLoadHandler.Instance.Load -= AssignAudioValues;
+        SaveLoadHandler.Instance.Save -= SaveAudioValues;
+    }
+
+    private void AssignAudioValues()
+    {
+        MasterVolume = PlayerPrefs.GetFloat(MasterVolumeKey);
+        MusicVolume = PlayerPrefs.GetFloat(MusicVolumeKey);
+        SFXVolume = PlayerPrefs.GetFloat(SFXVolumeKey);
+    }
+
+    private void SaveAudioValues()
+    {
+        PlayerPrefs.SetFloat(MasterVolumeKey, MasterVolume);
+        PlayerPrefs.SetFloat(MusicVolumeKey, MusicVolume);
+        PlayerPrefs.SetFloat(SFXVolumeKey, SFXVolume);
+    }
 
     public void PlaySound(AudioClip clip)
     {
@@ -31,16 +63,19 @@ public class AudioHandler : Handler<AudioHandler>
     //in order for the value to reach 0db.
     public void ChangeMasterVolume(float value)
     {
-        mainMixer.SetFloat(MasterVolume, Mathf.Log10(value) * 20);
+        MasterVolume = Mathf.Log10(value) * 20;
+        mainMixer.SetFloat(MasterVolumeKey, MasterVolume);
     }
     
     public void ChangeMusicVolume(float value)
     {
-        mainMixer.SetFloat(MusicVolume, Mathf.Log10(value) * 20);
+        MusicVolume = Mathf.Log10(value) * 20;
+        mainMixer.SetFloat(MusicVolumeKey, Mathf.Log10(value) * 20);
     }
     
     public void ChangeSFXVolume(float value)
     {
-        mainMixer.SetFloat(SFXVolume, Mathf.Log10(value) * 20);
+        SFXVolume = Mathf.Log10(value) * 20;
+        mainMixer.SetFloat(SFXVolumeKey, Mathf.Log10(value) * 20);
     }
 }
