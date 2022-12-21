@@ -687,6 +687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestFoobPiece
       objectReference: {fileID: 0}
+    - target: {fileID: 2679714555938308488, guid: c1fd3eb47723e3f448b0d9aa3ee36f1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2679714555938308495, guid: c1fd3eb47723e3f448b0d9aa3ee36f1d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1170,6 +1174,10 @@ PrefabInstance:
     - target: {fileID: 4315867647316428841, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
       propertyPath: m_Name
       value: PuzzlePiece 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315867647316428841, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4315867647316428846, guid: f90756bd3c56b39438764d6de7a74ad9, type: 3}
       propertyPath: m_Pivot.x
@@ -2144,6 +2152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzlePiece
       objectReference: {fileID: 0}
+    - target: {fileID: 6977448973801451779, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6977448973801451780, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.35
@@ -2174,11 +2186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977448973801451780, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 150
+      value: 265
       objectReference: {fileID: 0}
     - target: {fileID: 6977448973801451780, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 6977448973801451780, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2210,11 +2222,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977448973801451780, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -371
+      value: -483
       objectReference: {fileID: 0}
     - target: {fileID: 6977448973801451780, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 66
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 6977448973801451780, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2228,6 +2240,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6977448973801451781, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977448973801451781, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f67a6799e84bcb4391e68c987ee2d36, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
 --- !u!114 &6571290744431996472 stripped

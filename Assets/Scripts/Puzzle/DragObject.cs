@@ -24,12 +24,15 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private const float BaseScreenWidth = 1920f;
     private const float DistanceBuffer = 0.5f;
+    
+    private Animator _animator;
 
     private void Start()
     {
         _piece = GetComponent<PuzzlePiece>();
         _grid = FindObjectOfType<PuzzleGrid>();
         _myTransform = transform;
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -52,6 +55,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (Vector3.Distance(_myTransform.position, _piece.StartPosition) <= DistanceBuffer &&
             Utility.Approximately(Utility.QuaternionAbs(_myTransform.rotation), Utility.QuaternionAbs(_piece.StartRotation)))
         {
+            _animator.Play("Dropped", 0, 0);
             _myTransform.position = _piece.StartPosition;
             _shouldReset = false;
         }
@@ -100,6 +104,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (data.button != PointerEventData.InputButton.Left) return;
         if (_shouldReset) return;
         
+        _animator.Play("PickedUp", 0, 0);
         transform.SetAsLastSibling();
         _shouldReset = false;
         _leftClickHeld = true;
@@ -129,6 +134,7 @@ public class DragObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _leftClickHeld = false;
             return;
         }
+        _animator.Play("Placed", 0, 0);
         _leftClickHeld = false;
     }
 
