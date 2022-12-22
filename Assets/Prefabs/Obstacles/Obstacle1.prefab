@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7838693479979679251}
   m_Layer: 0
   m_Name: Middle
-  m_TagString: PuzzlePiece
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 6977448973801451783}
   - component: {fileID: 812428348696501009}
   m_Layer: 0
-  m_Name: PuzzlePiece
+  m_Name: Obstacle1
   m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,7 +195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -371, y: 66}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 300}
   m_Pivot: {x: 0.35, y: 0.5}
 --- !u!222 &6977448973801452282

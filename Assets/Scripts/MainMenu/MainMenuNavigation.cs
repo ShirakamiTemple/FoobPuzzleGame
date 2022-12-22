@@ -29,7 +29,7 @@ public class MainMenuNavigation : MonoBehaviour
 
     /// <summary>
     /// onClickEvent for changing main menu view. Uses enum int in order on the main menu
-    /// levels = 0, packs = 1, options = 2, credits = 3
+    /// title = 0, packs = 1, options = 2, credits = 3, levels = 5
     /// </summary>
     /// <param name="option"></param>
     public void OnClickChangeView(int option)
