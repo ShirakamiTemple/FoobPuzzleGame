@@ -12,6 +12,7 @@ public class SnapPointData : MonoBehaviour
     private void Awake()
     {
         _image = GetComponentInChildren<RawImage>();
+        print("Startup");
     }
 
     private void Update()

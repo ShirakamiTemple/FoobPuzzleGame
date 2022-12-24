@@ -17,6 +17,7 @@ public class PuzzleTile : MonoBehaviour
     {
         _image = GetComponent<RawImage>();
         _color = _image.color;
+        print("Startup");
     }
 
     //need this to be a coroutine so it will wait 1 frame before executing.

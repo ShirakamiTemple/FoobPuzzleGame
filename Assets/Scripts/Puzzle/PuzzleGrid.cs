@@ -18,6 +18,7 @@ public class PuzzleGrid : MonoBehaviour
         {
             Tiles.Add(child.GetComponent<PuzzleTile>());
         }
+        print("Startup");
     }
 
     private void NextStage()

@@ -30,6 +30,7 @@ public class PuzzlePiece : MonoBehaviour
         StartRotation = transform.rotation;
 
         _style.fontSize = 30;
+        print("Startup");
     }
 
     public bool CheckValidation()
