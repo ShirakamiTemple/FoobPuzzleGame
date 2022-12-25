@@ -1,9 +1,8 @@
 //***
 // Author: Nate
-// Description: PuzzlePiece is the main logic for handling a piece on a grid
+// Description: PuzzlePiece is the main logic for handling a piece on a grid and storing its data
 //***
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,20 +16,28 @@ public class PuzzlePiece : MonoBehaviour
     public DragObject Draggable { get; private set; }
     public Vector3 StartPosition { get; private set; }
     public Quaternion StartRotation { get; private set; }
-    [field: SerializeField]
     public bool IsValidated { get; set; }
 
-    private readonly GUIStyle _style = new();
-
-    private string _styleString;
+    public bool IsTouchingGrid { get; private set; }
 
     private void Awake()
     {
         StartPosition = transform.position;
         StartRotation = transform.rotation;
+    }
 
-        _style.fontSize = 30;
-        print("Startup");
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (!col.gameObject.CompareTag($"PuzzleGrid")) return;
+        
+        IsTouchingGrid = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (!col.gameObject.CompareTag($"PuzzleGrid")) return;
+
+        IsTouchingGrid = false;
     }
 
     public bool CheckValidation()

@@ -15,6 +15,8 @@ public class SceneHandler : Handler<SceneHandler>
     {
         base.Awake();
 
+        if (firstSceneToLoad.Length == 0) return;
+        
         SwitchScene(firstSceneToLoad);
     }
 

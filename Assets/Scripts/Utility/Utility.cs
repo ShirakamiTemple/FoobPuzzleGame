@@ -79,17 +79,33 @@ public static class Utility
     {
         return Quaternion.Dot(q1, q2) > 1f - 0.0000004f;
     }
-
+    
+    /// <summary>
+    /// Checks vector3 for approximate equality
+    /// </summary>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <returns></returns>
     public static bool Approximately(Vector3 v1, Vector3 v2)
     {
         return Vector3.Dot(v1, v2) > 1f - 0.0000004f;
     }
 
+    /// <summary>
+    /// Give the absolute value of a vector3
+    /// </summary>
+    /// <param name="vector"></param>
+    /// <returns></returns>
     public static Vector3 Vector3Abs(Vector3 vector)
     {
         return new Vector3(Mathf.Abs(vector.x), Mathf.Abs(vector.y), Mathf.Abs(vector.z));
     }
 
+    /// <summary>
+    /// Give the absolute value of a Quaternion
+    /// </summary>
+    /// <param name="q"></param>
+    /// <returns></returns>
     public static Quaternion QuaternionAbs(Quaternion q)
     {
         return new Quaternion(Mathf.Abs(q.x), Mathf.Abs(q.y), Mathf.Abs(q.z), Mathf.Abs(q.w));

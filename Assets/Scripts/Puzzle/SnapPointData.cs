@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +11,6 @@ public class SnapPointData : MonoBehaviour
     private void Awake()
     {
         _image = GetComponentInChildren<RawImage>();
-        print("Startup");
     }
 
     private void Update()

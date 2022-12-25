@@ -1,3 +1,8 @@
+//***
+// Author: Nate
+// Description: PuzzleTile is the main logic for handling a tile on a grid and storing its data and triggers
+//***
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,8 +21,10 @@ public class PuzzleTile : MonoBehaviour
     private void Awake()
     {
         _image = GetComponent<RawImage>();
-        _color = _image.color;
-        print("Startup");
+        if (_image != null)
+        {
+            _color = _image.color;
+        }
     }
 
     //need this to be a coroutine so it will wait 1 frame before executing.
@@ -33,13 +40,20 @@ public class PuzzleTile : MonoBehaviour
         {
             _currentSnapPoint = col.gameObject.GetComponent<SnapPointData>();
         }
-        _currentSnapPoint.IsOccupying = true;
-        _image.color = Color.magenta;
+
+        //check if the parent is in obstacle. If it is it will always be occupied so nothing can be placed there
+        _currentSnapPoint.IsOccupying = !transform.parent.CompareTag("Obstacle");
+        
+        if (_image != null)
+        {
+            _image.color = Color.magenta;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
         if (!col.gameObject.CompareTag(ColTag)) return;
+        
         if (_currentSnapPoint == null)
         {
             _currentSnapPoint = col.gameObject.GetComponent<SnapPointData>();

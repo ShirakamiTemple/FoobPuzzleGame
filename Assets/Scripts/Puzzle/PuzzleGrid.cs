@@ -1,3 +1,8 @@
+//***
+// Author: Nate
+// Description: PuzzleGrid is the main logic for handling the entire grid and its data
+//***
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +18,19 @@ public class PuzzleGrid : MonoBehaviour
     private void Awake()
     {
         Tiles.Clear();
-
         foreach (Transform child in transform)
         {
-            Tiles.Add(child.GetComponent<PuzzleTile>());
+            if (child.CompareTag("Obstacle"))
+            {
+                foreach (Transform grandChild in child.transform)
+                {
+                    if (!grandChild.CompareTag("PuzzleTile")) continue;
+                    Tiles.Add(grandChild.GetComponent<PuzzleTile>());
+                }
+            }
+            if (!child.CompareTag("PuzzleTile")) continue;
+                Tiles.Add(child.GetComponent<PuzzleTile>());
         }
-        print("Startup");
     }
 
     private void NextStage()
