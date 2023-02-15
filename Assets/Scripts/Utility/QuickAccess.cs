@@ -14,12 +14,17 @@ public static class QuickAccess
     {
         EditorSceneManager.OpenScene("Assets/Scenes/Global.unity");
     }
-    [MenuItem("QuickAccess/Scenes/Main Menu", false, 2)]
+    [MenuItem("QuickAccess/Scenes/Splash", false, 2)]
+    public static void OpenSplashScene()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/SplashScreen.unity");
+    }
+    [MenuItem("QuickAccess/Scenes/Main Menu", false, 3)]
     public static void OpenMainMenuScene()
     {
         EditorSceneManager.OpenScene("Assets/Scenes/MainMenu.unity");
     }
-    [MenuItem("QuickAccess/Scenes/Map Screen", false, 3)]
+    [MenuItem("QuickAccess/Scenes/Map Screen", false, 4)]
     public static void OpenMapScreenScene()
     {
         EditorSceneManager.OpenScene("Assets/Scenes/MapScreen.unity");

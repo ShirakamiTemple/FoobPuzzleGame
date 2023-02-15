@@ -1,3 +1,8 @@
+//***
+// Author: Nate
+// Description: SaveLoadHandler.cs handles saving and loading data from playerprefs
+//***
+
 using UnityEngine;
 
 public class SaveLoadHandler : Handler<SaveLoadHandler>
@@ -7,8 +12,9 @@ public class SaveLoadHandler : Handler<SaveLoadHandler>
     public delegate void OnDataLoad();
     public OnDataLoad Load;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         LoadData();
     }
     

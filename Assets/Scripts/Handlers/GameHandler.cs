@@ -1,9 +1,22 @@
+//***
+// Author: Nate
+// Description: GameHandler.cs handles most of the game information such as pieces, levels and packs
+//***
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameHandler : Handler<GameHandler>
 {
+    [field: SerializeField]
+    public List<LevelData> AvailableLevels { get; private set; }
+    [field: SerializeField]
+    public PuzzlePieceList AvailablePieces { get; private set; }
+    public enum PuzzlePack { DAN_PACK, BORIZ_PACK, KINOKO_PACK }
     public int CurrentLevel { get; set; }
-    public string CurrentPack { get; set; }
+    public PuzzlePack CurrentPack { get; set; }
+    public delegate void OnPackChange();
+    public OnPackChange PackChanged;
 
     protected override void Awake()
     {
@@ -15,18 +28,28 @@ public class GameHandler : Handler<GameHandler>
     private void AssignGameValues()
     {
         CurrentLevel = PlayerPrefs.GetInt("CurrentLevel");
-        CurrentPack = PlayerPrefs.GetString("CurrentPack");
+        ChangePack(PlayerPrefs.GetInt("CurrentPack"));
     }
 
     private void SaveGameValues()
     {
         PlayerPrefs.SetInt("CurrentLevel", CurrentLevel);
-        PlayerPrefs.SetString("CurrentPack", CurrentPack);
+        PlayerPrefs.SetInt("CurrentPack", (int)CurrentPack);
     }
 
     private void OnDestroy()
     {
         SaveLoadHandler.Instance.Load -= AssignGameValues;
         SaveLoadHandler.Instance.Save -= SaveGameValues;
+    }
+    
+    /// <summary>
+    /// ChangePack accepts an int and converted to the PuzzlePack enum. Updates the currently used pack.
+    /// </summary>
+    /// <param name="newPack"></param>
+    public void ChangePack(int newPack)
+    {
+        CurrentPack = (PuzzlePack)newPack;
+        PackChanged?.Invoke();
     }
 }

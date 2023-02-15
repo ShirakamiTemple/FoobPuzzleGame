@@ -130,6 +130,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9020035130138133818, guid: 69047fe5ef231d24d9323635ae61e97f, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020035130410021661, guid: 69047fe5ef231d24d9323635ae61e97f, type: 3}
+      propertyPath: <AvailablePieces>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: dfee08ed29661bf4fbccb4c1a4c1a8cd, type: 2}
+    - target: {fileID: 9020035130410021661, guid: 69047fe5ef231d24d9323635ae61e97f, type: 3}
+      propertyPath: <AvailableLevels>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020035130410021661, guid: 69047fe5ef231d24d9323635ae61e97f, type: 3}
+      propertyPath: <AvailableLevels>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90b8e3d8a8aa2f34fb80d6ad381e82e1, type: 2}
+    - target: {fileID: 9020035131232258777, guid: 69047fe5ef231d24d9323635ae61e97f, type: 3}
+      propertyPath: firstSceneToLoad
+      value: SplashScreen
+      objectReference: {fileID: 0}
     - target: {fileID: 9020035131445864480, guid: 69047fe5ef231d24d9323635ae61e97f, type: 3}
       propertyPath: m_RootOrder
       value: 0

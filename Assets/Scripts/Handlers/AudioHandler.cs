@@ -3,7 +3,6 @@
 // Description: AudioHandler is a Handler for managing the games audio
 //***
 
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,11 +10,9 @@ public class AudioHandler : Handler<AudioHandler>
 {
     [SerializeField] private AudioMixer mainMixer;
     [SerializeField] private AudioSource musicSource, effectsSource;
-
     private const string MasterVolumeKey = "MasterVolume";
     private const string MusicVolumeKey = "MusicVolume";
     private const string SFXVolumeKey = "SFXVolume";
-    
     public float MasterVolume { get; set; }
     public float MusicVolume { get; set; }
     public float SFXVolume { get; set; }
@@ -58,9 +55,9 @@ public class AudioHandler : Handler<AudioHandler>
         musicSource.Play();
     }
 
-    //Mathf.Log10(value) * 20)
-    //Decibels are logarithmic and -90 sound volume is equivalent to 0db. Therefore, we need to multiply the value by 20
-    //in order for the value to reach 0db.
+    // Mathf.Log10(value) * 20)
+    // Decibels are logarithmic and -90 sound volume is equivalent to 0db. Therefore, we need to multiply the value by 20
+    // in order for the value to reach 0db.
     public void ChangeMasterVolume(float value)
     {
         MasterVolume = Mathf.Log10(value) * 20;

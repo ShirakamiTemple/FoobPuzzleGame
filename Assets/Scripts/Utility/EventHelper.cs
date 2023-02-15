@@ -11,4 +11,9 @@ public class EventHelper : MonoBehaviour
     {
         SceneHandler.Instance.SwitchScene(sceneName);
     }
+
+    public void ChangeCurrentPack(int newPack)
+    {
+        GameHandler.Instance.CurrentPack = (GameHandler.PuzzlePack)newPack;
+    }
 }

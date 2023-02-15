@@ -14,8 +14,7 @@ public class SceneHandler : Handler<SceneHandler>
     protected override void Awake()
     {
         base.Awake();
-
-        if (firstSceneToLoad.Length == 0) return;
+        if (string.IsNullOrEmpty(firstSceneToLoad)) return;
         
         SwitchScene(firstSceneToLoad);
     }

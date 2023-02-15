@@ -8,16 +8,13 @@ using UnityEngine;
 
 public class MainMenuNavigation : MonoBehaviour
 {
-    public enum MenuOptions { Levels, Packs, Options, Credits}
-
-    private MenuOptions _currentOption = MenuOptions.Levels;
-
-    [SerializeField] private List<Vector2> positionViews = new();
-    
+    [SerializeField] 
+    private List<Vector2> positionViews = new();
     private Vector2 _positionToMove;
-
-    [SerializeField] private AnimationCurve movementCurve;
-    [SerializeField] private RectTransform objectToMove;
+    [SerializeField] 
+    private AnimationCurve movementCurve;
+    [SerializeField] 
+    private RectTransform objectToMove;
     private Vector3 _startPoint;
     private float _lerpTime;
     private bool _canLerp;
@@ -49,7 +46,6 @@ public class MainMenuNavigation : MonoBehaviour
             _canLerp = false;
             return;
         }
-        
         _lerpTime += Time.deltaTime;
         objectToMove.anchoredPosition = Vector2.Lerp(_startPoint, _positionToMove,  movementCurve.Evaluate(_lerpTime));
     }

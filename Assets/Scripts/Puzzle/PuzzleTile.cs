@@ -13,9 +13,7 @@ public class PuzzleTile : MonoBehaviour
     private SnapPointData _currentSnapPoint;
     private const string ColTag = "PuzzlePiece";
     private PuzzlePiece _piece;
-
     private RawImage _image;
-
     private Color _color;
 
     private void Awake()
@@ -28,11 +26,10 @@ public class PuzzleTile : MonoBehaviour
     }
 
     //need this to be a coroutine so it will wait 1 frame before executing.
-    //if you move a piece to fast sometimes onexit will trigger when onenter triggers and causes a confliction
+    //if you move a piece to fast sometimes onexit will trigger when onenter triggers and causes a conflict
     private IEnumerator OnTriggerEnter2D(Collider2D col)
     {
         if (!col.gameObject.CompareTag(ColTag)) yield break;
-        
         yield return null;
         
         IsOccupied = true;
@@ -40,10 +37,8 @@ public class PuzzleTile : MonoBehaviour
         {
             _currentSnapPoint = col.gameObject.GetComponent<SnapPointData>();
         }
-
         //check if the parent is in obstacle. If it is it will always be occupied so nothing can be placed there
         _currentSnapPoint.IsOccupying = !transform.parent.CompareTag("Obstacle");
-        
         if (_image != null)
         {
             _image.color = Color.magenta;
@@ -54,11 +49,6 @@ public class PuzzleTile : MonoBehaviour
     {
         if (!col.gameObject.CompareTag(ColTag)) return;
         
-        if (_currentSnapPoint == null)
-        {
-            _currentSnapPoint = col.gameObject.GetComponent<SnapPointData>();
-        }
-
         if (_currentSnapPoint != col.gameObject.GetComponent<SnapPointData>()) return;
         
         _currentSnapPoint.IsOccupying = false;
