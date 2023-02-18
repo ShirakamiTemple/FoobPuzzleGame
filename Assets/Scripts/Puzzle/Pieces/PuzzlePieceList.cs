@@ -1,18 +1,22 @@
 using System.Collections.Generic;
+using FoxHerding.Handlers;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Piece List", menuName = "Pieces/Piece Data")]
-public class PuzzlePieceList : ScriptableObject
+namespace FoxHerding.Puzzle.Pieces
 {
-    [field: SerializeField]
-    public List<PuzzlePieceData> AllPossiblePacks { get; private set; }
-    
-    [System.Serializable]
-    public class PuzzlePieceData
+    [CreateAssetMenu(fileName = "Piece List", menuName = "Pieces/Piece Data")]
+    public class PuzzlePieceList : ScriptableObject
     {
         [field: SerializeField]
-        public GameHandler.PuzzlePack CurrentPack { get; private set; }
-        [field: SerializeField]
-        public List<PuzzlePiece> PackPieces { get; private set; }
+        public List<PuzzlePieceData> AllPossiblePacks { get; private set; }
+    
+        [System.Serializable]
+        public class PuzzlePieceData
+        {
+            [field: SerializeField]
+            public GameHandler.PuzzlePack CurrentPack { get; private set; }
+            [field: SerializeField]
+            public List<PuzzlePiece> PackPieces { get; private set; }
+        }
     }
 }

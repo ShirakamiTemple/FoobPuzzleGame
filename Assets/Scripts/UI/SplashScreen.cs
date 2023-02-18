@@ -1,20 +1,24 @@
 using System.Collections;
+using FoxHerding.Utility;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SplashScreen : MonoBehaviour
+namespace FoxHerding.UI
 {
-    [SerializeField, Tooltip("How long to delay input for continuing to main menu")]
-    private float inputDelayTime = 1f;
-
-    private IEnumerator Start()
+    public class SplashScreen : MonoBehaviour
     {
-        yield return Utility.GetWait(inputDelayTime);
+        [SerializeField, Tooltip("How long to delay input for continuing to main menu")]
+        private float inputDelayTime = 1f;
 
-        while (!Input.anyKeyDown)
+        private IEnumerator Start()
         {
-            yield return null;
+            yield return Tools.GetWait(inputDelayTime);
+
+            while (!Input.anyKeyDown)
+            {
+                yield return null;
+            }
+            SceneManager.LoadScene("MainMenu");
         }
-        SceneManager.LoadScene("MainMenu");
     }
 }

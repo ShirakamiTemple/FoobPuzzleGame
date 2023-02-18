@@ -5,10 +5,13 @@
 
 using UnityEngine;
 
-public class DontDestroy : MonoBehaviour
+namespace FoxHerding.Utility
 {
-    private void Awake()
+    public class DontDestroy : MonoBehaviour
     {
-        DontDestroyOnLoad(this);
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
+        }
     }
 }

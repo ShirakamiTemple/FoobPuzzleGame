@@ -6,20 +6,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SnapPointData : MonoBehaviour
+namespace FoxHerding.Puzzle.Pieces
 {
-    public bool IsOccupying { get; set; }
-    private RawImage _image;
-
-    private void Awake()
+    public class SnapPointData : MonoBehaviour
     {
-        _image = GetComponentInChildren<RawImage>();
-    }
+        public bool IsOccupying { get; set; }
+        private RawImage _image;
 
-    private void Update()
-    {
-        if (_image == null) return;
+        private void Awake()
+        {
+            _image = GetComponentInChildren<RawImage>();
+        }
 
-        _image.color = IsOccupying ? Color.blue : Color.red;
+        private void Update()
+        {
+            if (_image == null) return;
+
+            _image.color = IsOccupying ? Color.blue : Color.red;
+        }
     }
 }

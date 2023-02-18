@@ -3,13 +3,17 @@
 // Description: SFXTrigger.cs is used to trigger sound effects through events primarily.
 //***
 
+using FoxHerding.Handlers;
 using UnityEngine;
 
-public class SFXTrigger : MonoBehaviour
+namespace FoxHerding.Utility
 {
-    // called from object event component or animation events
-    public void PlaySFX(AudioClip clip)
+    public class SFXTrigger : MonoBehaviour
     {
-        AudioHandler.Instance.PlaySound(clip);
+        // called from object event component or animation events
+        public void PlaySFX(AudioClip clip)
+        {
+            AudioHandler.Instance.PlaySound(clip);
+        }
     }
 }

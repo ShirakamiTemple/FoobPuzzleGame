@@ -5,33 +5,37 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using FoxHerding.Puzzle.Pieces;
 using UnityEngine;
 
-public class PuzzleGrid : MonoBehaviour
+namespace FoxHerding.Puzzle
 {
-    public List<PuzzlePiece> Pieces  { get; set; }
-    public List<PuzzleTile> Tiles { get; private set; } = new();
-    private bool _allPiecesValidated;
-
-    private void Awake()
+    public class PuzzleGrid : MonoBehaviour
     {
-        Tiles = GetComponentsInChildren<PuzzleTile>()
-            .Where(x => x.CompareTag("PuzzleTile") || 
-                        x.CompareTag("Obstacle") && 
-                        x.transform.parent.CompareTag("Obstacle"))
-            .ToList();
-    }
+        public List<PuzzlePiece> Pieces  { get; set; }
+        public List<PuzzleTile> Tiles { get; private set; } = new();
+        private bool _allPiecesValidated;
 
-    private void NextStage()
-    {
-        if (_allPiecesValidated)
+        private void Awake()
         {
-            //update grid
+            Tiles = GetComponentsInChildren<PuzzleTile>()
+                .Where(x => x.CompareTag("PuzzleTile") || 
+                            x.CompareTag("Obstacle") && 
+                            x.transform.parent.CompareTag("Obstacle"))
+                .ToList();
         }
-    }
 
-    public void CheckAllValidation()
-    {
-        _allPiecesValidated = Pieces.All(x => x.IsValidated);
+        private void NextStage()
+        {
+            if (_allPiecesValidated)
+            {
+                //update grid
+            }
+        }
+
+        public void CheckAllValidation()
+        {
+            _allPiecesValidated = Pieces.All(x => x.IsValidated);
+        }
     }
 }

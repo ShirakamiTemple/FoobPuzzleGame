@@ -5,22 +5,25 @@
 
 using UnityEngine;
 
-public class FoobabyAnimator : MonoBehaviour
+namespace FoxHerding.UI
 {
-    private static Animator _foobabyAnimator;
-
-    private void Awake()
+    public class FoobabyAnimator : MonoBehaviour
     {
-        _foobabyAnimator = GetComponent<Animator>();
-    }
+        private static Animator _foobabyAnimator;
 
-    public static void PlayPickedUpFoob()
-    {
-        _foobabyAnimator.Play("Disabled", 0, 0);
-    }
+        private void Awake()
+        {
+            _foobabyAnimator = GetComponent<Animator>();
+        }
 
-    public static void PlayNormalFoob()
-    {
-        _foobabyAnimator.Play("Normal", 0, 0);
+        public static void PlayPickedUpFoob()
+        {
+            _foobabyAnimator.Play("Disabled", 0, 0);
+        }
+
+        public static void PlayNormalFoob()
+        {
+            _foobabyAnimator.Play("Normal", 0, 0);
+        }
     }
 }
