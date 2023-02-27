@@ -52,8 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6256b64a3dbef741b7d6424113d5a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Pieces>k__BackingField:
-  - {fileID: 0}
 --- !u!61 &7119400178972759295
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 5113965179704261461, guid: f9cb6931da32a6348a2d7842a3d30ec5, type: 3}
       propertyPath: m_Name
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113965179704261461, guid: f9cb6931da32a6348a2d7842a3d30ec5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9cb6931da32a6348a2d7842a3d30ec5, type: 3}

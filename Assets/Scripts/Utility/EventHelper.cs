@@ -3,12 +3,21 @@
 // Description: EventHelper has public methods for button events and other accessible
 //***
 
+using FoxHerding.Handlers;
 using UnityEngine;
 
-public class EventHelper : MonoBehaviour
+namespace FoxHerding.Utility
 {
-    public void SwitchScene(string sceneName)
+    public class EventHelper : MonoBehaviour
     {
-        SceneHandler.Instance.SwitchScene(sceneName);
+        public void SwitchScene(string sceneName)
+        {
+            SceneHandler.Instance.SwitchScene(sceneName);
+        }
+
+        public void ChangeCurrentPack(int newPack)
+        {
+            GameHandler.Instance.CurrentPack = (GameHandler.PuzzlePack)newPack;
+        }
     }
 }

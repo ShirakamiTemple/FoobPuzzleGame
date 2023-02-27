@@ -4,51 +4,38 @@
 //***
 
 using System.Collections.Generic;
+using System.Linq;
+using FoxHerding.Puzzle.Pieces;
 using UnityEngine;
 
-public class PuzzleGrid : MonoBehaviour
+namespace FoxHerding.Puzzle
 {
-    [field: SerializeField]
-    public List<PuzzlePiece> Pieces  { get; private set; }
-
-    public List<PuzzleTile> Tiles { get; private set; } = new();
-
-    private bool _allPiecesValidated;
-
-    private void Awake()
+    public class PuzzleGrid : MonoBehaviour
     {
-        Tiles.Clear();
-        foreach (Transform child in transform)
+        public List<PuzzlePiece> Pieces  { get; set; }
+        public List<PuzzleTile> Tiles { get; private set; } = new();
+        private bool _allPiecesValidated;
+
+        private void Awake()
         {
-            if (child.CompareTag("Obstacle"))
+            Tiles = GetComponentsInChildren<PuzzleTile>()
+                .Where(x => x.CompareTag("PuzzleTile") || 
+                            x.CompareTag("Obstacle") && 
+                            x.transform.parent.CompareTag("Obstacle"))
+                .ToList();
+        }
+
+        private void NextStage()
+        {
+            if (_allPiecesValidated)
             {
-                foreach (Transform grandChild in child.transform)
-                {
-                    if (!grandChild.CompareTag("PuzzleTile")) continue;
-                    Tiles.Add(grandChild.GetComponent<PuzzleTile>());
-                }
+                //update grid
             }
-            if (!child.CompareTag("PuzzleTile")) continue;
-                Tiles.Add(child.GetComponent<PuzzleTile>());
         }
-    }
 
-    private void NextStage()
-    {
-        if (_allPiecesValidated)
+        public void CheckAllValidation()
         {
-            //update grid
+            _allPiecesValidated = Pieces.All(x => x.IsValidated);
         }
-    }
-
-    public void CheckAllValidation()
-    {
-        bool allValidated = true;
-        foreach (PuzzlePiece piece in Pieces)
-        {
-            allValidated = piece.IsValidated;
-            if (!allValidated) break;
-        }
-        _allPiecesValidated = allValidated;
     }
 }

@@ -1,32 +1,61 @@
+//***
+// Author: Nate
+// Description: GameHandler.cs handles most of the game information such as pieces, levels and packs
+//***
+
+using System.Collections.Generic;
+using FoxHerding.Generics;
+using FoxHerding.Levels;
+using FoxHerding.Puzzle.Pieces;
 using UnityEngine;
 
-public class GameHandler : Handler<GameHandler>
+namespace FoxHerding.Handlers
 {
-    public int CurrentLevel { get; set; }
-    public string CurrentPack { get; set; }
-
-    protected override void Awake()
+    public class GameHandler : Handler<GameHandler>
     {
-        base.Awake();
-        SaveLoadHandler.Instance.Load += AssignGameValues;
-        SaveLoadHandler.Instance.Save += SaveGameValues;
-    }
+        [field: SerializeField]
+        public List<LevelData> AvailableLevels { get; private set; }
+        [field: SerializeField]
+        public PuzzlePieceList AvailablePieces { get; private set; }
+        public enum PuzzlePack { DAN_PACK, BORIZ_PACK, KINOKO_PACK }
+        public int CurrentLevel { get; set; }
+        public PuzzlePack CurrentPack { get; set; }
+        public delegate void OnPackChange();
+        public OnPackChange PackChanged;
 
-    private void AssignGameValues()
-    {
-        CurrentLevel = PlayerPrefs.GetInt("CurrentLevel");
-        CurrentPack = PlayerPrefs.GetString("CurrentPack");
-    }
+        protected override void Awake()
+        {
+            base.Awake();
+            SaveLoadHandler.Instance.Load += AssignGameValues;
+            SaveLoadHandler.Instance.Save += SaveGameValues;
+        }
 
-    private void SaveGameValues()
-    {
-        PlayerPrefs.SetInt("CurrentLevel", CurrentLevel);
-        PlayerPrefs.SetString("CurrentPack", CurrentPack);
-    }
+        private void AssignGameValues()
+        {
+            CurrentLevel = PlayerPrefs.GetInt("CurrentLevel");
+            ChangePack(PlayerPrefs.GetInt("CurrentPack"));
+        }
 
-    private void OnDestroy()
-    {
-        SaveLoadHandler.Instance.Load -= AssignGameValues;
-        SaveLoadHandler.Instance.Save -= SaveGameValues;
+        private void SaveGameValues()
+        {
+            PlayerPrefs.SetInt("CurrentLevel", CurrentLevel);
+            PlayerPrefs.SetInt("CurrentPack", (int)CurrentPack);
+        }
+
+        private void OnDestroy()
+        {
+            SaveLoadHandler.Instance.Load -= AssignGameValues;
+            SaveLoadHandler.Instance.Save -= SaveGameValues;
+        }
+    
+        /// <summary>
+        /// ChangePack accepts an int and converted to the PuzzlePack enum. Updates the currently used pack.
+        /// </summary>
+        /// <param name="newPack"></param>
+        public void ChangePack(int newPack)
+        {
+            CurrentPack = (PuzzlePack)newPack;
+            PackChanged?.Invoke();
+        }
     }
 }
