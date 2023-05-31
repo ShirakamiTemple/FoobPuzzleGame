@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6274be542f55ed34fb19264ab238973b, type: 3}
+  m_Name: Stage2
+  m_EditorClassIdentifier: 
+  LevelGrid: {fileID: 3079664761267629711, guid: 0e54380d8d3323f48bf8ee7204fdb3d3, type: 3}
+  AvailablePieces:
+  - CurrentPieceType: 1
+    SpawnPosition: {x: 200, y: 200}
+    SpawnRotation: 0
+  IntroduceNewPiece: 1
+  PieceToIntroduce:
+    PieceType: 1
+    PieceDisplayName: Double Piece
+    PieceDescription: Hey this piece is cool and does some neat things and lore and
+      stuff not sure how big this section should be or whatever lol
+    TileHolderPrefab: {fileID: 4405609438874865984, guid: d3a0d3102fbd6c940812454dd5856a28, type: 3}

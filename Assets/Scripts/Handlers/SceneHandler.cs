@@ -30,6 +30,8 @@ namespace FoxHerding.Handlers
         private float _canvasHeight;
         [SerializeField]
         private RectTransform transitionImageTransform;
+        public delegate void SceneLoadedHandler(string sceneName);
+        public event SceneLoadedHandler SceneLoaded;
 
         protected override void Awake()
         {
@@ -89,7 +91,7 @@ namespace FoxHerding.Handlers
             _isTransitioning = true;
             // Start swipe transition
             SwipeDirection randomDirection = GetRandomSwipeDirection();
-            
+            AudioHandler.Instance.PlaySound(AudioHandler.Instance.SfxClips[0]);
             yield return StartCoroutine(BeginSwipeTransition(0, randomDirection));
             // Load new scene
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync(scene);
@@ -105,8 +107,11 @@ namespace FoxHerding.Handlers
                 yield return null;
             }
             // Finish swipe transition
+            AudioHandler.Instance.PlaySound(AudioHandler.Instance.SfxClips[0]);
             yield return StartCoroutine(EndSwipeTransition(GetOppositeSwipeDirection(randomDirection)));
             _isTransitioning = false;
+            
+            SceneLoaded?.Invoke(scene);
         }
 
         private IEnumerator BeginSwipeTransition(float newEndingPos, SwipeDirection randomDirection)

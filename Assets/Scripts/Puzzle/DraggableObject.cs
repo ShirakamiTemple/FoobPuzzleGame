@@ -3,6 +3,7 @@
 // Description: DragObject allows an object to be dragged with the mouse
 //***
 
+using FoxHerding.Handlers;
 using FoxHerding.Puzzle.Pieces;
 using FoxHerding.UI;
 using FoxHerding.Utility;
@@ -133,7 +134,7 @@ namespace FoxHerding.Puzzle
                 case PointerEventData.InputButton.Left:
                     _piece.IsValidated = false;
                     _animator.Play(_piece.IsTouchingGrid ? "PickedUpIdle" : "PickedUp", 0, 0);
-                    FoobabyAnimator.PlayPickedUpFoob();
+                    UIHandler.Instance.GameUI.PlayPickedUpFoob();
                     transform.SetAsLastSibling();
                     _shouldReset = false;
                     _leftClickHeld = true;
@@ -150,7 +151,7 @@ namespace FoxHerding.Puzzle
         {
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
-            FoobabyAnimator.PlayNormalFoob();
+            UIHandler.Instance.GameUI.PlayNormalFoob();
             if (!_piece.CheckValidation() && _piece.IsTouchingGrid)
             {
                 StartObjectReset();
@@ -161,6 +162,7 @@ namespace FoxHerding.Puzzle
             {
                 pickupParticles.gameObject.SetActive(true);
                 pickupParticles.Play();
+                _grid.AttemptToProceedToNextStage();
             }
             _animator.Play(_piece.IsTouchingGrid ? "Placed" : "Dropped", 0, 0);
             _leftClickHeld = false;

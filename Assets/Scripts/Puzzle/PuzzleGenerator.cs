@@ -3,6 +3,7 @@
 // Description: PuzzleGenerator.cs generates the grid and pieces required for the current level
 //***
 
+using System;
 using System.Collections.Generic;
 using FoxHerding.Handlers;
 using FoxHerding.Levels;
@@ -18,6 +19,7 @@ namespace FoxHerding.Puzzle
         [SerializeField, Tooltip("Reference to the parent of where you want the grid to be instantiated")] 
         private Transform gridParentTransform;
         private PuzzlePieceList.PuzzlePieceData _currentPieceData;
+        private LevelData _levelData;
         private GameHandler _gameHandler;
         private readonly List<PuzzlePiece> _createdPieces = new();
         private GameObject _newGrid;
@@ -26,15 +28,27 @@ namespace FoxHerding.Puzzle
         {
             _gameHandler = GameHandler.Instance;
             PlaceGrid();
-            GeneratorPieces();
+            CenterActiveTiles();
+            GeneratePieces();
+            SceneHandler.Instance.SceneLoaded += OnSceneLoaded;
         }
 
-        private void GeneratorPieces()
+        private void OnDestroy()
+        {
+            SceneHandler.Instance.SceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(string sceneName)
+        {
+            UIHandler.Instance.GameUI.UpdateNewPieceData(_currentPieceData, _levelData);
+        }
+
+        private void GeneratePieces()
         {
             _createdPieces.Clear();
-            LevelData levelData = _gameHandler.AvailableLevels[_gameHandler.CurrentLevel];
+            _levelData = _gameHandler.AvailableLevels[_gameHandler.CurrentLevel];
             _currentPieceData = _gameHandler.AvailablePieces.AllPossiblePacks[(int)_gameHandler.CurrentPack];
-            foreach (LevelData.PieceSpawnData levelPiece in levelData.AvailablePieces)
+            foreach (LevelData.PieceSpawnData levelPiece in _levelData.AvailablePieces)
             {
                 foreach (PuzzlePiece packPiece in _currentPieceData.PackPieces)
                 {
@@ -56,6 +70,31 @@ namespace FoxHerding.Puzzle
         private void PlaceGrid()
         {
             _newGrid = Instantiate(_gameHandler.AvailableLevels[_gameHandler.CurrentLevel].LevelGrid, gridParentTransform);
+            _newGrid.name = "Level " + _gameHandler.CurrentLevel + 1 + " grid";
+        }
+
+        private void CenterActiveTiles()
+        {
+            if (_newGrid == null) return;
+            
+            int activeTileCount = 0;
+            Vector3 totalPosition = Vector3.zero;
+            foreach (Transform child in _newGrid.transform)
+            {
+                if (!child.gameObject.activeSelf) continue;
+                
+                activeTileCount++;
+                totalPosition += child.position;
+            }
+            if (activeTileCount <= 0) return;
+            
+            // center the grid based on active tiles
+            Vector3 centerPosition = totalPosition / activeTileCount;
+            _newGrid.transform.position = centerPosition;
+            RectTransform gridRect = _newGrid.GetComponent<RectTransform>();
+            Vector2 anchoredPosition = gridRect.anchoredPosition;
+            anchoredPosition = new Vector2(-anchoredPosition.x, -anchoredPosition.y);
+            gridRect.anchoredPosition = anchoredPosition;
         }
     }
 }

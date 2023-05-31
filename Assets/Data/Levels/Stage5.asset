@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6274be542f55ed34fb19264ab238973b, type: 3}
+  m_Name: Stage5
+  m_EditorClassIdentifier: 
+  LevelGrid: {fileID: 3079664761267629711, guid: 4c181d99a88b5fe44a68dbeb9e58401c, type: 3}
+  AvailablePieces:
+  - CurrentPieceType: 0
+    SpawnPosition: {x: 200, y: 200}
+    SpawnRotation: 0
+  - CurrentPieceType: 1
+    SpawnPosition: {x: 200, y: -200}
+    SpawnRotation: 0
+  - CurrentPieceType: 2
+    SpawnPosition: {x: -200, y: 200}
+    SpawnRotation: 0
+  IntroduceNewPiece: 0
+  PieceToIntroduce:
+    PieceType: 0
+    PieceDisplayName: 
+    PieceDescription: 
+    TileHolderPrefab: {fileID: 0}
