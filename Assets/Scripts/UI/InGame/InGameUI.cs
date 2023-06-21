@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FoxHerding.Handlers;
 using FoxHerding.Levels;
@@ -9,11 +10,10 @@ namespace FoxHerding.UI
 {
     public class InGameUI : MonoBehaviour
     {
-        [SerializeField, Tooltip("Reference to foobaby animator")]
-        private Animator foobabyAnimator;
+        [SerializeField, Tooltip("Reference to puzzle win animator")]
+        private Animator puzzleWinAnimator;
         [SerializeField, Tooltip("Reference to newPiece animator")]
         private Animator newPieceNoticeAnimator;
-
         [SerializeField, Tooltip("Reference to the newPieceDisplay Animator")]
         private Animator newPieceDisplayAnimator;
         [SerializeField, Tooltip("Reference to the newPieceDisplay text name field")]
@@ -25,20 +25,39 @@ namespace FoxHerding.UI
         [SerializeField, Tooltip("Reference to level UI text")]
         private TextMeshProUGUI currentLevel;
 
+        [SerializeField, Tooltip("reference to the main game animator")] 
+        private Animator gameAnimator;
+
         private void Awake()
         {
             UIHandler.Instance.GameUI = this;
+            SceneHandler.Instance.SceneLoaded += PlayGameStartAnimation;
             UpdateLevelUI();
         }
 
-        public void PlayPickedUpFoob()
+        private void OnDestroy()
         {
-            foobabyAnimator.Play("Disabled", 0, 0);
+            SceneHandler.Instance.SceneLoaded -= PlayGameStartAnimation;
         }
 
-        public void PlayNormalFoob()
+        public void ShowPuzzleWinNotice()
         {
-            foobabyAnimator.Play("Normal", 0, 0);
+            puzzleWinAnimator.Play("LevelClearShow", 0, 0);
+        }
+
+        public void HidePuzzleWinNotice()
+        {
+            puzzleWinAnimator.Play("LevelClearHide", 0, 0);
+        }
+
+        private void PlayGameStartAnimation(string scenename)
+        {
+            gameAnimator.Play("Map_Start_Game", 0, 0);
+        }
+
+        public void PlayGameEndAnimation()
+        {
+            gameAnimator.Play("Map_End_Game", 0, 0);
         }
 
         public void ShowNewPieceNotice()

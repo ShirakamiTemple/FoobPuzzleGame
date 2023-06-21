@@ -30,8 +30,18 @@ namespace FoxHerding.Puzzle
         {
             if (!CheckAllValidation()) return;
             
+            UIHandler.Instance.GameUI.PlayGameEndAnimation();
+        }
+
+        public void ProceedToNextStage()
+        {
             GameHandler.Instance.CurrentLevel += 1;
-            SceneHandler.Instance.ReloadCurrentScene();
+            SceneHandler.Instance.ReloadCurrentSceneWithoutTransition();
+        }
+
+        public void ReplayStage()
+        {
+            SceneHandler.Instance.ReloadCurrentSceneWithoutTransition();
         }
 
         //checks if all current pieces have been validated

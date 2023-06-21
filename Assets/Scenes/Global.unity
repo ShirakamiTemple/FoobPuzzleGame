@@ -575,6 +575,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1128335007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7906027687417893279, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+  m_PrefabInstance: {fileID: 8319751595248126501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1275860707
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,13 +952,73 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 317836760}
     m_Modifications:
+    - target: {fileID: 641637209198244347, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341956476983917569, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 1128335007}
+    - target: {fileID: 4476060918292105832, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955304688136025680, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288404332443291159, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633445540041586087, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319751593977359072, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319751593977359073, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319751593977359079, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319751593977359079, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319751593977359079, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319751593977359079, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8319751593977359079, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 55
       objectReference: {fileID: 0}
+    - target: {fileID: 8319751594961686316, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319751594961686318, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8319751595391701020, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
       propertyPath: m_Name
       value: Cameras
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319751595391701020, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8319751595391701023, guid: fd78e9dc04cb18e478e099c532b46b1a, type: 3}
       propertyPath: m_RootOrder

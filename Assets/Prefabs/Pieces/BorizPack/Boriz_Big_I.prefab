@@ -239,9 +239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 500
   snapSpeed: 20
-  pickupParticles: {fileID: 6394116495328135595}
-  particleCamera: {fileID: 5163929466443114821}
-  particleImage: {fileID: 1032000421100956369}
 --- !u!114 &812428348696501009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +258,7 @@ MonoBehaviour:
   <PointData>k__BackingField:
   - {fileID: 7838693479979679251}
   - {fileID: 2052189220413226124}
+  <IsValidated>k__BackingField: 0
   pieceImage: {fileID: 7131155673096829326}
 --- !u!61 &8417577180908674723
 BoxCollider2D:
@@ -429,29 +427,8 @@ PrefabInstance:
       objectReference: {fileID: 8400000, guid: bbbcf5bdabfc8be4cb832809604677d8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
---- !u!114 &1032000421100956369 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1123905281355381465, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 129072822572666888}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &3692896483272057524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3671914487182635708, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 129072822572666888}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &5163929466443114821 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5072031132377839949, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 129072822572666888}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6394116495328135595 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6446612730532469155, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
   m_PrefabInstance: {fileID: 129072822572666888}
   m_PrefabAsset: {fileID: 0}

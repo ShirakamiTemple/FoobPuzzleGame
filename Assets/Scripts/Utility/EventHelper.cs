@@ -4,7 +4,9 @@
 //***
 
 using FoxHerding.Handlers;
+using FoxHerding.Puzzle;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FoxHerding.Utility
 {
@@ -18,6 +20,11 @@ namespace FoxHerding.Utility
         public void ChangeCurrentPack(int newPack)
         {
             GameHandler.Instance.CurrentPack = (GameHandler.PuzzlePack)newPack;
+        }
+
+        public void DetermineNextLevel()
+        {
+            FindObjectOfType<PuzzleAnimatorHelper>()?.DetermineNextStage();
         }
 
         public void PlayButtonHover()

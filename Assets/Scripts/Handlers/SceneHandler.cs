@@ -44,7 +44,6 @@ namespace FoxHerding.Handlers
             _canvasHeight = rect.height;
             
             SwitchSceneWithoutTransition(firstSceneToLoad);
-            //StartCoroutine(TransitionToScene(firstSceneToLoad));
         }
 
         public void SwitchScene(string scene)
@@ -66,6 +65,17 @@ namespace FoxHerding.Handlers
             {
                 StartCoroutine(TransitionToScene(SceneManager.GetActiveScene().name));
             }
+        }
+        
+        public void ReloadCurrentSceneWithoutTransition()
+        {
+            if (_isTransitioning) return;
+            
+            string sceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadSceneAsync(sceneName).completed += _ =>
+            {
+                SceneLoaded?.Invoke(sceneName);
+            };
         }
         
         private static SwipeDirection GetRandomSwipeDirection()
@@ -143,7 +153,7 @@ namespace FoxHerding.Handlers
             }
             transitionImageTransform.anchoredPosition = startingPos;
             //literally just choosing -30 or 30 degrees for rotation amount
-            float rotationAmount = Random.Range(0, 2) == 0 ? -30f : 30f;
+            float rotationAmount = 0; //Random.Range(0, 2) == 0 ? -30f : 30f;
             transitionImageTransform.rotation = Quaternion.Euler(0f, 0f, rotationAmount);
             float timer = 0;
             while (timer < transitionDuration)
