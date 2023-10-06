@@ -14,13 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelGrid: {fileID: 3079664761267629711, guid: 0e54380d8d3323f48bf8ee7204fdb3d3, type: 3}
   AvailablePieces:
-  - CurrentPieceType: 1
-    SpawnPosition: {x: 200, y: 200}
-    SpawnRotation: 0
+  - CurrentPieceType: 2
   IntroduceNewPiece: 1
   PieceToIntroduce:
-    PieceType: 1
-    PieceDisplayName: Double Piece
-    PieceDescription: Hey this piece is cool and does some neat things and lore and
-      stuff not sure how big this section should be or whatever lol
-    TileHolderPrefab: {fileID: 4405609438874865984, guid: d3a0d3102fbd6c940812454dd5856a28, type: 3}
+    PieceType: 2
+    PieceDisplayName: BIG L PIECE
+    PieceDescription: Press right click to rotate a piece!
+    TileHolderPrefab: {fileID: 6855304782647935526, guid: f98dabd8ec282d44faf1e7e7c09f9e15, type: 3}

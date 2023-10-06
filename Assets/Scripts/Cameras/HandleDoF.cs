@@ -7,6 +7,7 @@ namespace FoxHerding.Cameras
     {
         private const float Amount = 3;
         private const float DefaultAmount = 10;
+        
         private void OnEnable()
         {
             CameraHandler.Instance.SetDepthOfField(Amount);
@@ -16,5 +17,10 @@ namespace FoxHerding.Cameras
         {
             CameraHandler.Instance.SetDepthOfField(DefaultAmount);
         }
+
+        // public void ResetDoF()
+        // {
+        //     CameraHandler.Instance.SetDepthOfField(DefaultAmount);
+        // }
     }
 }

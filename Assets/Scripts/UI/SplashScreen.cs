@@ -3,6 +3,7 @@
 // Description: Splashscreen.cs handles the functionality of the splash screen
 //***
 
+using System;
 using System.Collections;
 using FoxHerding.Handlers;
 using FoxHerding.Utility;
@@ -17,6 +18,11 @@ namespace FoxHerding.UI
         private VideoPlayer videoPlayer;
         [SerializeField, Tooltip("How long to delay input for continuing to main menu")]
         private float inputDelayTime = 1f;
+
+        private void Awake()
+        {
+            videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath,"FoobHerdinIntro.mp4");
+        }
 
         private IEnumerator Start()
         {

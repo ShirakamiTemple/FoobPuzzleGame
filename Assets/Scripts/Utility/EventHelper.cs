@@ -6,7 +6,7 @@
 using FoxHerding.Handlers;
 using FoxHerding.Puzzle;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace FoxHerding.Utility
 {
@@ -15,6 +15,11 @@ namespace FoxHerding.Utility
         public void SwitchScene(string sceneName)
         {
             SceneHandler.Instance.SwitchScene(sceneName);
+        }
+
+        public void Exit()
+        {
+            Application.Quit();
         }
 
         public void ChangeCurrentPack(int newPack)
@@ -40,6 +45,16 @@ namespace FoxHerding.Utility
         public void PlayPickupPieceUI()
         {
             UIHandler.Instance.GameUI.PieceDisplayPickupAnimation();
+        }
+
+        public void SetSelectCursor()
+        {
+            UIHandler.Instance.SetSelectedCursor();
+        }
+        
+        public void SetDefaultCursor()
+        {
+            UIHandler.Instance.SetDefaultCursor();
         }
     }
 }

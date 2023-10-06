@@ -40,29 +40,27 @@ namespace FoxHerding.Handlers
 
         private void Update()
         {
-            if (_transitionTimer < dofSpeed)
-            {
-                _transitionTimer += Time.deltaTime;
-                float t = Mathf.Clamp01(_transitionTimer / dofSpeed);
+            if (_transitionTimer >= dofSpeed) return;
+            
+            _transitionTimer += Time.deltaTime;
+            float t = Mathf.Clamp01(_transitionTimer / dofSpeed);
 
-                // Smoothly transition the focus distance
-                _currentFocusDistance = Mathf.Lerp(_initialFocusDistance, targetFocusDistance, t);
-                _depthOfField.focusDistance.value = _currentFocusDistance;
-            }
+            // Smoothly transition the focus distance
+            _currentFocusDistance = Mathf.Lerp(_initialFocusDistance, targetFocusDistance, t);
+            _depthOfField.focusDistance.value = _currentFocusDistance;
+            volume.gameObject.SetActive(!Mathf.Approximately(_currentFocusDistance, 10f));
         }
 
-        public void ResetDepthOfField()
+        private void ResetDepthOfField()
         {
-            print("reset");
             _initialFocusDistance = _currentFocusDistance; // Set the initial focus distance to the current value
             _transitionTimer = 0f; // Reset the transition timer
         }
 
         public void SetDepthOfField(float focusDistance)
         {
-            _initialFocusDistance = _currentFocusDistance; // Set the initial focus distance to the current value
+            ResetDepthOfField();
             targetFocusDistance = focusDistance; // Set the target focus distance
-            _transitionTimer = 0f; // Reset the transition timer
         }
         
         public Vector3 FoxScreenToWorldPoint(Vector3 screenPosition)

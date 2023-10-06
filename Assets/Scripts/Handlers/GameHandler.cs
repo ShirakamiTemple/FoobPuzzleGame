@@ -4,8 +4,8 @@
 //***
 
 using System.Collections.Generic;
+using FoxHerding.Data.Levels;
 using FoxHerding.Generics;
-using FoxHerding.Levels;
 using FoxHerding.Puzzle.Pieces;
 using UnityEngine;
 

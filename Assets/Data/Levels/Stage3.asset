@@ -15,12 +15,12 @@ MonoBehaviour:
   LevelGrid: {fileID: 3079664761267629711, guid: da6e298ce357d8a4abf4fc6353491e4c, type: 3}
   AvailablePieces:
   - CurrentPieceType: 2
-    SpawnPosition: {x: -200, y: 200}
-    SpawnRotation: 0
+    FlipPiece: 1
+  - CurrentPieceType: 0
+    FlipPiece: 0
   IntroduceNewPiece: 1
   PieceToIntroduce:
-    PieceType: 2
-    PieceDisplayName: L Piece
-    PieceDescription: Hey this piece is cool and does some neat things and lore and
-      stuff not sure how big this section should be or whatever lol
-    TileHolderPrefab: {fileID: 6855304782647935526, guid: f98dabd8ec282d44faf1e7e7c09f9e15, type: 3}
+    PieceType: 0
+    PieceDisplayName: Single Piece
+    PieceDescription: The mascots come in all shapes and sizes!
+    TileHolderPrefab: {fileID: 4544959533183657856, guid: 4b1af6bd1103cb74eac243c56c94e13b, type: 3}

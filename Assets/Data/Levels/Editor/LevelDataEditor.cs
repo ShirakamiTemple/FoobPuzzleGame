@@ -3,10 +3,9 @@
 // Description: LevelDataEditor.cs is a custom editor that draws a the level data in the inspector 
 //***
 
-using FoxHerding.Levels;
 using UnityEditor;
 
-namespace FoxHerding
+namespace FoxHerding.Data.Levels.Editor
 {
     [CustomEditor(typeof(LevelData))]
     public class LevelDataEditor : UnityEditor.Editor

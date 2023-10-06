@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: MasterPieceList
   m_EditorClassIdentifier: 
   <AllPossiblePacks>k__BackingField:
-  - <CurrentPack>k__BackingField: 0
-    <PackPieces>k__BackingField:
-    - {fileID: 812428348696501009, guid: 6a5b05035d951d747b20b93e965cd7bc, type: 3}
-    - {fileID: 812428348696501009, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
-    - {fileID: 812428348696501009, guid: 405486f46c834794886d608bc975e9c7, type: 3}
   - <CurrentPack>k__BackingField: 1
     <PackPieces>k__BackingField:
     - {fileID: 812428348696501009, guid: d29ff29b3f8f2724c911f09b68dad83f, type: 3}
     - {fileID: 812428348696501009, guid: afafeb1c48e6b2c40b1bc765dde71aa4, type: 3}
     - {fileID: 812428348696501009, guid: 90ff55443854f154da3087753b8e4a44, type: 3}
+    - {fileID: 812428348696501009, guid: e684fe62c257d0e4299da038545ef806, type: 3}
+    - {fileID: 812428348696501009, guid: 418178bc69d14604a9401f6af895d89a, type: 3}
   - <CurrentPack>k__BackingField: 2
     <PackPieces>k__BackingField:
     - {fileID: 812428348696501009, guid: 796619e6393ea97459e5cd326fb75749, type: 3}
     - {fileID: 812428348696501009, guid: 0025c3090bb61884291342ce2ee82ac0, type: 3}
     - {fileID: 812428348696501009, guid: 67dae203904143845960ce1bda216f13, type: 3}
+  - <CurrentPack>k__BackingField: 0
+    <PackPieces>k__BackingField:
+    - {fileID: 812428348696501009, guid: 6a5b05035d951d747b20b93e965cd7bc, type: 3}
+    - {fileID: 812428348696501009, guid: 3279fecfce7a8a34a856088e7fe3462a, type: 3}
+    - {fileID: 812428348696501009, guid: 405486f46c834794886d608bc975e9c7, type: 3}

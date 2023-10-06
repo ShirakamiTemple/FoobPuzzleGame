@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using FoxHerding.Data.Levels;
 using FoxHerding.Handlers;
-using FoxHerding.Levels;
 using FoxHerding.Puzzle.Pieces;
 using TMPro;
 using UnityEngine;
@@ -24,9 +24,10 @@ namespace FoxHerding.UI
         private Transform tileHolderParent;
         [SerializeField, Tooltip("Reference to level UI text")]
         private TextMeshProUGUI currentLevel;
-
         [SerializeField, Tooltip("reference to the main game animator")] 
         private Animator gameAnimator;
+        [SerializeField, Tooltip("Reference to sukonbu reaction animator")] 
+        private Animator sukonbuAnimator;
 
         private void Awake()
         {
@@ -38,6 +39,11 @@ namespace FoxHerding.UI
         private void OnDestroy()
         {
             SceneHandler.Instance.SceneLoaded -= PlayGameStartAnimation;
+        }
+        
+        public void PlaySukonbuReaction(string animationName)
+        {
+            sukonbuAnimator.Play(animationName, 0, 0);
         }
 
         public void ShowPuzzleWinNotice()
@@ -84,9 +90,10 @@ namespace FoxHerding.UI
                 if (packPiece.CurrentPieceType == levelData.PieceToIntroduce.PieceType)
                 {
                     Animator pieceAnim = packPiece.gameObject.GetComponentInChildren<Animator>();
-                    newPieceDisplayAnimator.runtimeAnimatorController = pieceAnim.runtimeAnimatorController;
+                    newPieceDisplayAnimator.runtimeAnimatorController = pieceAnim?.runtimeAnimatorController;
                     newPieceName.text = levelData.PieceToIntroduce.PieceDisplayName;
                     newPieceDescription.text = levelData.PieceToIntroduce.PieceDescription;
+                    if (levelData.PieceToIntroduce.TileHolderPrefab == null) break;
                     GameObject tileUsage = Instantiate(levelData.PieceToIntroduce.TileHolderPrefab, tileHolderParent);
                     tileUsage.name = "TileHolder";
                 }

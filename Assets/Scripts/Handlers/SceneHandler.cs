@@ -172,25 +172,32 @@ namespace FoxHerding.Handlers
         {
             Vector2 startingPos = default;
             Vector2 endingPos;
+    
+            float screenRatio = (float)Screen.width / Screen.height;
+            float imageWidth = transitionImageTransform.rect.width;
+            float imageHeight = transitionImageTransform.rect.height;
+    
             switch (randomDirection)
             {
                 case SwipeDirection.Right: // Right
-                    endingPos = new Vector2(_canvasWidth, 0);
+                    endingPos = new Vector2(Screen.width * screenRatio + imageWidth, 0);
                     break;
                 case SwipeDirection.Left: // Left
-                    endingPos = new Vector2(-_canvasWidth, 0);
+                    endingPos = new Vector2(-Screen.width * screenRatio - imageWidth, 0);
                     break;
                 case SwipeDirection.Up: // Up
-                    endingPos = new Vector2(0, _canvasHeight);
+                    endingPos = new Vector2(0, Screen.height * screenRatio + imageHeight);
                     break;
                 case SwipeDirection.Down: // Down
-                    endingPos = new Vector2(0, -_canvasHeight);
+                    endingPos = new Vector2(0, -Screen.height * screenRatio - imageHeight);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(randomDirection), randomDirection, null);
             }
+    
             transitionImageTransform.anchoredPosition = startingPos;
             float timer = 0;
+    
             while (timer < transitionDuration)
             {
                 timer += Time.deltaTime;
@@ -198,6 +205,7 @@ namespace FoxHerding.Handlers
                 transitionImageTransform.anchoredPosition = Vector2.Lerp(startingPos, endingPos, progress);
                 yield return null;
             }
+    
             transitionImageTransform.anchoredPosition = endingPos;
         }
     }

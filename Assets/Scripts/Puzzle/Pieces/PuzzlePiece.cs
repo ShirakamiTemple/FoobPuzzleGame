@@ -12,7 +12,7 @@ namespace FoxHerding.Puzzle.Pieces
 {
     public class PuzzlePiece : MonoBehaviour
     {
-        public enum PieceType { SINGLE, BIG_I, BIG_L, SQUARE }
+        public enum PieceType { SINGLE, BIG_I, BIG_L, SQUARE, TwoXThreeXThree, Big_L2 }
         [field: SerializeField]
         public PieceType CurrentPieceType { get; private set; }
         [field: SerializeField]

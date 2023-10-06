@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelGrid: {fileID: 3079664761267629711, guid: 34a5bd78d24969e47882a329df843327, type: 3}
   AvailablePieces:
-  - CurrentPieceType: 1
-    SpawnPosition: {x: 200, y: 200}
+  - CurrentPieceType: 4
+    FlipPiece: 1
+  - CurrentPieceType: 2
+    FlipPiece: 0
   IntroduceNewPiece: 0
-  PieceToIntroduce: 2
+  PieceToIntroduce:
+    PieceType: 0
+    PieceDisplayName: 
+    PieceDescription: 
+    TileHolderPrefab: {fileID: 0}

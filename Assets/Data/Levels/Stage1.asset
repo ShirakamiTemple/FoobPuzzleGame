@@ -14,14 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelGrid: {fileID: 3079664761267629711, guid: dfddfb57103430c449ca176825515b73, type: 3}
   AvailablePieces:
-  - CurrentPieceType: 0
-    SpawnPosition: {x: -200, y: -200}
-    SpawnRotation: 0
+  - CurrentPieceType: 2
   IntroduceNewPiece: 1
   PieceToIntroduce:
-    PieceType: 0
-    PieceAnimator: {fileID: 0}
-    PieceDisplayName: Single Piece
-    PieceDescription: Hey this piece is cool and does some neat things and lore and
-      stuff not sure how big this section should be or whatever lol
-    TileHolderPrefab: {fileID: 4544959533183657856, guid: 4b1af6bd1103cb74eac243c56c94e13b, type: 3}
+    PieceType: 2
+    PieceDisplayName: BIG L PIECE
+    PieceDescription: Hold left click to drag a mascot onto the grid in the proper
+      place to complete the stage!
+    TileHolderPrefab: {fileID: 6855304782647935526, guid: f98dabd8ec282d44faf1e7e7c09f9e15, type: 3}

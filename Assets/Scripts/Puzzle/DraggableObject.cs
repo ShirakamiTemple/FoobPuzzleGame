@@ -128,6 +128,7 @@ namespace FoxHerding.Puzzle
                 case PointerEventData.InputButton.Left:
                     _piece.IsValidated = false;
                     _animator.Play(_piece.IsTouchingGrid ? "PickedUpIdle" : "PickedUp", 0, 0);
+                    UIHandler.Instance.GameUI.PlaySukonbuReaction("Pickup");
                     transform.SetAsLastSibling();
                     _shouldReset = false;
                     _leftClickHeld = true;
@@ -144,6 +145,8 @@ namespace FoxHerding.Puzzle
         {
             if (eventData.button != PointerEventData.InputButton.Left) return;
     
+            UIHandler.Instance.GameUI.PlaySukonbuReaction("Idle");
+            _animator.Play(_piece.IsTouchingGrid ? "Placed" : "Dropped", 0, 0);
             if (!_piece.CheckValidation() && _piece.IsTouchingGrid)
             {
                 _shouldReset = true;
@@ -154,7 +157,6 @@ namespace FoxHerding.Puzzle
             {
                 SnapToTile();
             }
-            _animator.Play(_piece.IsTouchingGrid ? "Placed" : "Dropped", 0, 0);
             _leftClickHeld = false;
             if (_piece.CheckValidation())
             {

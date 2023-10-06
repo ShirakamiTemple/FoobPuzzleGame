@@ -165,6 +165,8 @@ GameObject:
   - component: {fileID: 6977448973801451783}
   - component: {fileID: 812428348696501009}
   - component: {fileID: 7702316475836227683}
+  - component: {fileID: 2588927734991718682}
+  - component: {fileID: 5856118751578314608}
   m_Layer: 0
   m_Name: Kinoko_Big_L
   m_TagString: GridChecker
@@ -220,9 +222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 500
   snapSpeed: 20
-  pickupParticles: {fileID: 813571574902337308}
-  particleCamera: {fileID: 1468140936387416050}
-  particleImage: {fileID: 6747644517074193510}
 --- !u!114 &812428348696501009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +245,7 @@ MonoBehaviour:
   - {fileID: 7838693479979679251}
   - {fileID: 1392220445395164708}
   - {fileID: 4692865353247468925}
+  <IsValidated>k__BackingField: 0
   pieceImage: {fileID: 3521234565910639494}
 --- !u!60 &7702316475836227683
 PolygonCollider2D:
@@ -278,6 +278,63 @@ PolygonCollider2D:
       - {x: 140, y: -162}
       - {x: -54, y: -162}
       - {x: -54, y: 138}
+--- !u!114 &2588927734991718682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6977448973801451779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd49faa59d25ad4eb5166eb4f3c89c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5856118751578314608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6977448973801451779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2588927734991718682}
+          m_TargetAssemblyTypeName: FoxHerding.Utility.EventHelper, Assembly-CSharp
+          m_MethodName: SetSelectCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2588927734991718682}
+          m_TargetAssemblyTypeName: FoxHerding.Utility.EventHelper, Assembly-CSharp
+          m_MethodName: SetDefaultCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7687480384759022378
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,27 +649,6 @@ PrefabInstance:
       objectReference: {fileID: 8400000, guid: 74248a80e97a74946bac805c9f6c1669, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
---- !u!198 &813571574902337308 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6446612730532469155, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 5925781729016985279}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &1468140936387416050 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5072031132377839949, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 5925781729016985279}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6747644517074193510 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1123905281355381465, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 5925781729016985279}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6974344999843333123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3671914487182635708, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
