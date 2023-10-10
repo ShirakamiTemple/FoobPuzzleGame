@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using FoxHerding.Handlers;
 using FoxHerding.Puzzle.Pieces;
 using UnityEngine;
 
@@ -19,23 +20,34 @@ namespace FoxHerding.Puzzle
         private void Awake()
         {
             Tiles = GetComponentsInChildren<PuzzleTile>()
-                .Where(x => x.CompareTag("PuzzleTile") || 
-                            x.CompareTag("Obstacle") && 
-                            x.transform.parent.CompareTag("Obstacle"))
+                .Where(tile => tile.CompareTag("PuzzleTile") || 
+                               tile.CompareTag("Obstacle") && 
+                               tile.transform.parent.CompareTag("Obstacle"))
                 .ToList();
         }
 
-        private void NextStage()
+        public void AttemptToProceedToNextStage()
         {
-            if (_allPiecesValidated)
-            {
-                //update grid
-            }
+            if (!CheckAllValidation()) return;
+            
+            UIHandler.Instance.GameUI.PlayGameEndAnimation();
         }
 
-        public void CheckAllValidation()
+        public void ProceedToNextStage()
         {
-            _allPiecesValidated = Pieces.All(x => x.IsValidated);
+            GameHandler.Instance.CurrentLevel += 1;
+            SceneHandler.Instance.ReloadCurrentSceneWithoutTransition();
+        }
+
+        public void ReplayStage()
+        {
+            SceneHandler.Instance.ReloadCurrentSceneWithoutTransition();
+        }
+
+        //checks if all current pieces have been validated
+        private bool CheckAllValidation()
+        {
+            return Pieces.All(piece => piece.IsValidated);
         }
     }
 }

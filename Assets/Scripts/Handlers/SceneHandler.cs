@@ -30,6 +30,8 @@ namespace FoxHerding.Handlers
         private float _canvasHeight;
         [SerializeField]
         private RectTransform transitionImageTransform;
+        public delegate void SceneLoadedHandler(string sceneName);
+        public event SceneLoadedHandler SceneLoaded;
 
         protected override void Awake()
         {
@@ -42,7 +44,6 @@ namespace FoxHerding.Handlers
             _canvasHeight = rect.height;
             
             SwitchSceneWithoutTransition(firstSceneToLoad);
-            //StartCoroutine(TransitionToScene(firstSceneToLoad));
         }
 
         public void SwitchScene(string scene)
@@ -64,6 +65,17 @@ namespace FoxHerding.Handlers
             {
                 StartCoroutine(TransitionToScene(SceneManager.GetActiveScene().name));
             }
+        }
+        
+        public void ReloadCurrentSceneWithoutTransition()
+        {
+            if (_isTransitioning) return;
+            
+            string sceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadSceneAsync(sceneName).completed += _ =>
+            {
+                SceneLoaded?.Invoke(sceneName);
+            };
         }
         
         private static SwipeDirection GetRandomSwipeDirection()
@@ -89,7 +101,7 @@ namespace FoxHerding.Handlers
             _isTransitioning = true;
             // Start swipe transition
             SwipeDirection randomDirection = GetRandomSwipeDirection();
-            
+            AudioHandler.Instance.PlaySound(AudioHandler.Instance.SfxClips[0]);
             yield return StartCoroutine(BeginSwipeTransition(0, randomDirection));
             // Load new scene
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync(scene);
@@ -105,8 +117,11 @@ namespace FoxHerding.Handlers
                 yield return null;
             }
             // Finish swipe transition
+            AudioHandler.Instance.PlaySound(AudioHandler.Instance.SfxClips[0]);
             yield return StartCoroutine(EndSwipeTransition(GetOppositeSwipeDirection(randomDirection)));
             _isTransitioning = false;
+            
+            SceneLoaded?.Invoke(scene);
         }
 
         private IEnumerator BeginSwipeTransition(float newEndingPos, SwipeDirection randomDirection)
@@ -138,7 +153,7 @@ namespace FoxHerding.Handlers
             }
             transitionImageTransform.anchoredPosition = startingPos;
             //literally just choosing -30 or 30 degrees for rotation amount
-            float rotationAmount = Random.Range(0, 2) == 0 ? -30f : 30f;
+            float rotationAmount = 0; //Random.Range(0, 2) == 0 ? -30f : 30f;
             transitionImageTransform.rotation = Quaternion.Euler(0f, 0f, rotationAmount);
             float timer = 0;
             while (timer < transitionDuration)
@@ -157,25 +172,32 @@ namespace FoxHerding.Handlers
         {
             Vector2 startingPos = default;
             Vector2 endingPos;
+    
+            float screenRatio = (float)Screen.width / Screen.height;
+            float imageWidth = transitionImageTransform.rect.width;
+            float imageHeight = transitionImageTransform.rect.height;
+    
             switch (randomDirection)
             {
                 case SwipeDirection.Right: // Right
-                    endingPos = new Vector2(_canvasWidth, 0);
+                    endingPos = new Vector2(Screen.width * screenRatio + imageWidth, 0);
                     break;
                 case SwipeDirection.Left: // Left
-                    endingPos = new Vector2(-_canvasWidth, 0);
+                    endingPos = new Vector2(-Screen.width * screenRatio - imageWidth, 0);
                     break;
                 case SwipeDirection.Up: // Up
-                    endingPos = new Vector2(0, _canvasHeight);
+                    endingPos = new Vector2(0, Screen.height * screenRatio + imageHeight);
                     break;
                 case SwipeDirection.Down: // Down
-                    endingPos = new Vector2(0, -_canvasHeight);
+                    endingPos = new Vector2(0, -Screen.height * screenRatio - imageHeight);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(randomDirection), randomDirection, null);
             }
+    
             transitionImageTransform.anchoredPosition = startingPos;
             float timer = 0;
+    
             while (timer < transitionDuration)
             {
                 timer += Time.deltaTime;
@@ -183,6 +205,7 @@ namespace FoxHerding.Handlers
                 transitionImageTransform.anchoredPosition = Vector2.Lerp(startingPos, endingPos, progress);
                 yield return null;
             }
+    
             transitionImageTransform.anchoredPosition = endingPos;
         }
     }

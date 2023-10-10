@@ -18,10 +18,12 @@ namespace FoxHerding.Puzzle
         private PuzzlePiece _piece;
         private RawImage _image;
         private Color _color;
+        private Color _highlightColor;
 
         private void Awake()
         {
             _image = GetComponent<RawImage>();
+            _highlightColor = new Color(135f / 255f, 181f / 255f, 193f / 255f);
             if (_image != null)
             {
                 _color = _image.color;
@@ -44,7 +46,7 @@ namespace FoxHerding.Puzzle
             _currentSnapPoint.IsOccupying = !transform.parent.CompareTag("Obstacle");
             if (_image != null)
             {
-                _image.color = Color.magenta;
+                _image.color = _highlightColor;
             }
         }
 

@@ -12,7 +12,7 @@ namespace FoxHerding.Puzzle.Pieces
 {
     public class PuzzlePiece : MonoBehaviour
     {
-        public enum PieceType { SINGLE, BIG_I, BIG_L, SQUARE }
+        public enum PieceType { SINGLE, BIG_I, BIG_L, SQUARE, TwoXThreeXThree, Big_L2 }
         [field: SerializeField]
         public PieceType CurrentPieceType { get; private set; }
         [field: SerializeField]
@@ -21,6 +21,7 @@ namespace FoxHerding.Puzzle.Pieces
         public List<SnapPointData> PointData { get; private set; }
         public Vector3 StartPosition { get; private set; }
         public Quaternion StartRotation { get; private set; }
+        [field: SerializeField]
         public bool IsValidated { get; set; }
         public bool IsTouchingGrid { get; private set; }
         private Transform _myTransform;
@@ -42,7 +43,7 @@ namespace FoxHerding.Puzzle.Pieces
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (!col.gameObject.CompareTag("PuzzleGrid")) return;
-    
+
             IsTouchingGrid = true;
         }
 

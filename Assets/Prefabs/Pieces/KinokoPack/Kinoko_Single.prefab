@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 6977448973801451783}
   - component: {fileID: 812428348696501009}
   - component: {fileID: 8417577180908674723}
+  - component: {fileID: 8745339137511918317}
+  - component: {fileID: 7919035416298305106}
   m_Layer: 0
   m_Name: Kinoko_Single
   m_TagString: GridChecker
@@ -141,9 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 500
   snapSpeed: 20
-  pickupParticles: {fileID: 8643128618536692413}
-  particleCamera: {fileID: 7559026722446248531}
-  particleImage: {fileID: 2385955995078429127}
 --- !u!114 &812428348696501009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +160,7 @@ MonoBehaviour:
   - {fileID: 2899688051904750733}
   <PointData>k__BackingField:
   - {fileID: 7838693479979679251}
+  <IsValidated>k__BackingField: 0
   pieceImage: {fileID: 4698860661558292140}
 --- !u!61 &8417577180908674723
 BoxCollider2D:
@@ -188,6 +188,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &8745339137511918317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6977448973801451779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd49faa59d25ad4eb5166eb4f3c89c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7919035416298305106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6977448973801451779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8745339137511918317}
+          m_TargetAssemblyTypeName: FoxHerding.Utility.EventHelper, Assembly-CSharp
+          m_MethodName: SetSelectCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8745339137511918317}
+          m_TargetAssemblyTypeName: FoxHerding.Utility.EventHelper, Assembly-CSharp
+          m_MethodName: SetDefaultCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7202141945543749251
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,26 +410,5 @@ PrefabInstance:
 --- !u!4 &2049478084174004642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3671914487182635708, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 3351935620468601630}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2385955995078429127 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1123905281355381465, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 3351935620468601630}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!20 &7559026722446248531 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5072031132377839949, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
-  m_PrefabInstance: {fileID: 3351935620468601630}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &8643128618536692413 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6446612730532469155, guid: 38f708e8858ec4c489d164f4b308bd1d, type: 3}
   m_PrefabInstance: {fileID: 3351935620468601630}
   m_PrefabAsset: {fileID: 0}

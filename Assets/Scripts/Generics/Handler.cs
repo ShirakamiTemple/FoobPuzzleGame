@@ -13,7 +13,6 @@ namespace FoxHerding.Generics
     /// Singleton MonoBehaviour component that can be used as a handler for a specific type of component.
     /// </summary>
     /// <typeparam name="T">Type of the component to be handled by this singleton.</typeparam>
-
     public class Handler<T> : MonoBehaviour where T : Component
     {
         // ReSharper disable once StaticMemberInGenericType
@@ -39,7 +38,7 @@ namespace FoxHerding.Generics
                     {
                         GameObject go = new();
                         instance = go.AddComponent<T>();
-                        go.name = instance.GetType()?.FullName;
+                        go.name = instance.GetType().FullName;
                     }
                     Instances[typeof(T).FullName] = instance;
                     return instance;

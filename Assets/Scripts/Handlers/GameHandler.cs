@@ -4,8 +4,8 @@
 //***
 
 using System.Collections.Generic;
+using FoxHerding.Data.Levels;
 using FoxHerding.Generics;
-using FoxHerding.Levels;
 using FoxHerding.Puzzle.Pieces;
 using UnityEngine;
 
@@ -22,6 +22,8 @@ namespace FoxHerding.Handlers
         public PuzzlePack CurrentPack { get; set; }
         public delegate void OnPackChange();
         public OnPackChange PackChanged;
+        [SerializeField]
+        private bool skipLoad;
 
         protected override void Awake()
         {
@@ -32,6 +34,8 @@ namespace FoxHerding.Handlers
 
         private void AssignGameValues()
         {
+            if (skipLoad) return;
+            
             CurrentLevel = PlayerPrefs.GetInt("CurrentLevel");
             ChangePack(PlayerPrefs.GetInt("CurrentPack"));
         }
