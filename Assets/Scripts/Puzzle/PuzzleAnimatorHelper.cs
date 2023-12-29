@@ -58,5 +58,10 @@ namespace FoxHerding.Puzzle
             piecesTransform.SetParent(transform);
             piecesTransform.SetSiblingIndex(PiecesChildIndex);
         }
+
+        public void PlayShowCurrentLevelAnimation()
+        {
+            UIHandler.Instance.GameUI.ShowCurrentLevel();
+        }
     }
 }

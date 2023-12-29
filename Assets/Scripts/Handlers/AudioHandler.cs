@@ -25,6 +25,8 @@ namespace FoxHerding.Handlers
         public SoundClip[] BgmClips { get; private set; }
         [field: SerializeField, Tooltip("SFX References")]
         public SoundClip[] SfxClips { get; private set; }
+        private const float MinVolume = -80f;
+        private const float MaxVolume = 0f;
 
         protected override void Awake()
         {
@@ -108,25 +110,35 @@ namespace FoxHerding.Handlers
             musicSource.PlayOneShot(clip.Clip);
         }
 
+        private static float VolumeMapper(float value)
+        {
+            return Mathf.Lerp(Mathf.Pow(8, MinVolume / 20f), Mathf.Pow(8, MaxVolume / 20f), value);
+        }
+
         // Mathf.Log10(value) * 20)
         // Decibels are logarithmic and -90 sound volume is equivalent to 0db. Therefore, we need to multiply the value by 20
         // in order for the value to reach 0db.
         public void ChangeMasterVolume(float value)
         {
-            MasterVolume = Mathf.Log10(value) * 20;
-            mainMixer.SetFloat(MasterVolumeKey, MasterVolume);
+            MasterVolume = VolumeMapper(value);
+            mainMixer.SetFloat(MasterVolumeKey, 20f * Mathf.Log10(MasterVolume));
         }
     
         public void ChangeMusicVolume(float value)
         {
-            MusicVolume = Mathf.Log10(value) * 20;
-            mainMixer.SetFloat(MusicVolumeKey, Mathf.Log10(value) * 20);
+            MusicVolume = VolumeMapper(value);
+            mainMixer.SetFloat(MusicVolumeKey, 20f * Mathf.Log10(MusicVolume));
         }
     
         public void ChangeSfxVolume(float value)
         {
-            SfxVolume = Mathf.Log10(value) * 20;
-            mainMixer.SetFloat(SfxVolumeKey, Mathf.Log10(value) * 20);
+            SfxVolume = VolumeMapper(value);
+            mainMixer.SetFloat(SfxVolumeKey, 20f * Mathf.Log10(SfxVolume));
+        }
+
+        public void MuteAllAudio(bool value)
+        {
+            mainMixer.SetFloat(MasterVolumeKey, value ? -80.0f : Mathf.Log10(MasterVolume) * 20); 
         }
     }
 

@@ -1,10 +1,11 @@
-using System;
+
 using System.Collections.Generic;
 using FoxHerding.Data.Levels;
 using FoxHerding.Handlers;
 using FoxHerding.Puzzle.Pieces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FoxHerding.UI
 {
@@ -28,6 +29,14 @@ namespace FoxHerding.UI
         private Animator gameAnimator;
         [SerializeField, Tooltip("Reference to sukonbu reaction animator")] 
         private Animator sukonbuAnimator;
+        [SerializeField, Tooltip("Reference to the current level animator")]
+        private Animator currentLevelAnimator;
+        [SerializeField, Tooltip("Reference to the settings slider animator")]
+        private Animator settingsSlider;
+        private bool settingsSliderIsVisible;
+        [SerializeField, Tooltip("Reference to nejima animator")]
+        private Animator nejimaAnimator;
+        private static readonly int SettingsHovered = Animator.StringToHash("settingsHovered");
 
         private void Awake()
         {
@@ -56,7 +65,7 @@ namespace FoxHerding.UI
             puzzleWinAnimator.Play("LevelClearHide", 0, 0);
         }
 
-        private void PlayGameStartAnimation(string scenename)
+        private void PlayGameStartAnimation(string sceneName)
         {
             gameAnimator.Play("Map_Start_Game", 0, 0);
         }
@@ -64,6 +73,7 @@ namespace FoxHerding.UI
         public void PlayGameEndAnimation()
         {
             gameAnimator.Play("Map_End_Game", 0, 0);
+            HideCurrentLevel();
         }
 
         public void ShowNewPieceNotice()
@@ -79,6 +89,58 @@ namespace FoxHerding.UI
         public void PieceDisplayPickupAnimation()
         {
             newPieceDisplayAnimator.Play("PickedUp", 0, 0);
+        }
+
+        public void ShowCurrentLevel()
+        {
+            currentLevelAnimator.Play("Show", 0, 0);
+        }
+
+        private void HideCurrentLevel()
+        {
+            currentLevelAnimator.Play("Hide", 0, 0);
+        }
+
+        public void ToggleSettingsSlider()
+        {
+            if (settingsSliderIsVisible)
+            {
+                HideSettingsSlider();
+            }
+            else
+            {
+                ShowSettingsSlider();
+            }
+            settingsSliderIsVisible = !settingsSliderIsVisible;
+            nejimaAnimator.Play("Press", 0, 0);
+        }
+
+        public void ToggleSettingsHover(bool hovered)
+        {
+            nejimaAnimator.SetBool(SettingsHovered, hovered);
+        }
+        
+        private void ShowSettingsSlider()
+        {
+            settingsSlider.Play("Show");
+            ToggleSettingsSliderButtons(true);
+        }
+
+        private void HideSettingsSlider()
+        {
+            settingsSlider.Play("Hide");
+            ToggleSettingsSliderButtons(false);
+        }
+
+        private void ToggleSettingsSliderButtons(bool toggle)
+        {
+            foreach (Transform child in settingsSlider.transform.GetChild(0).transform)
+            {
+                Button childButton = child.GetComponent<Button>();
+                if (childButton == null) continue;
+                print(toggle);
+                childButton.interactable = toggle;
+            }
         }
 
         public void UpdateNewPieceData(PuzzlePieceList.PuzzlePieceData pieceData, LevelData levelData)
@@ -112,7 +174,7 @@ namespace FoxHerding.UI
             // Check if either string is null or if the strings have different lengths; if so, they cannot be isomorphic.
             if (t == null || s == null || t.Length != s.Length) return false;
             
-            //Dictionary to map the charaters to each other
+            //Dictionary to map the characters to each other
             // Hashset to track characters that have been used.
             Dictionary<char, char> map = new Dictionary<char, char>();
             HashSet<char> usedCharacters = new HashSet<char>();
@@ -126,9 +188,9 @@ namespace FoxHerding.UI
                 // If the current character in the first string has already been mapped to a character in the second string,
                 // check if the character in the second string matches the current character. If not, the strings
                 // are not isomorphic.
-                if (map.ContainsKey(characterInFirstString))
+                if (map.TryGetValue(characterInFirstString, out char value))
                 {
-                    if (map[characterInFirstString] != characterInSecondString) return false;
+                    if (value != characterInSecondString) return false;
                 }
                 else
                 {
