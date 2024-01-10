@@ -56,5 +56,10 @@ namespace FoxHerding.Utility
         {
             UIHandler.Instance.SetDefaultCursor();
         }
+
+        public void ShowOptionsPanel()
+        {
+            UIHandler.Instance.ShowOptions();
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace FoxHerding.UI
 {
-    public class MainMenuButtonAnimator : MonoBehaviour
+    public class ButtonAnimator : MonoBehaviour
     {
         [SerializeField]
         private bool disableButton;

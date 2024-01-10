@@ -16,6 +16,8 @@ namespace FoxHerding.Handlers
         private Texture2D defaultCursor;
         [SerializeField]
         private Texture2D selectableCursor;
+        [SerializeField]
+        private Animator optionsAnimator;
 
         public void SetDefaultCursor()
         {
@@ -25,6 +27,11 @@ namespace FoxHerding.Handlers
         public void SetSelectedCursor()
         {
             Cursor.SetCursor(selectableCursor, Vector2.zero, CursorMode.Auto);
+        }
+
+        public void ShowOptions()
+        {
+            optionsAnimator.Play("OptionsShow", 0, 0);
         }
     }
 }

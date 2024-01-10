@@ -120,7 +120,6 @@ namespace FoxHerding.Handlers
             AudioHandler.Instance.PlaySound(AudioHandler.Instance.SfxClips[0]);
             yield return StartCoroutine(EndSwipeTransition(GetOppositeSwipeDirection(randomDirection)));
             _isTransitioning = false;
-            
             SceneLoaded?.Invoke(scene);
         }
 
@@ -151,15 +150,17 @@ namespace FoxHerding.Handlers
                 default:
                     throw new ArgumentOutOfRangeException(nameof(randomDirection), randomDirection, null);
             }
+            float distance = Vector2.Distance(startingPos, endingPos);
+            float adjustedDuration = transitionDuration * (distance / _canvasWidth); // Adjust duration based on the distance
             transitionImageTransform.anchoredPosition = startingPos;
             //literally just choosing -30 or 30 degrees for rotation amount
             float rotationAmount = 0; //Random.Range(0, 2) == 0 ? -30f : 30f;
             transitionImageTransform.rotation = Quaternion.Euler(0f, 0f, rotationAmount);
             float timer = 0;
-            while (timer < transitionDuration)
+            while (timer < adjustedDuration)
             {
                 timer += Time.deltaTime;
-                float progress = _transitionCurve.Evaluate(timer / transitionDuration);
+                float progress = _transitionCurve.Evaluate(timer / adjustedDuration);
                 transitionImageTransform.anchoredPosition = Vector2.Lerp(startingPos, endingPos, progress);
                 transitionImageTransform.rotation = Quaternion.Euler(0f, 0f, rotationAmount * (1 - progress));
                 yield return null;
@@ -172,11 +173,9 @@ namespace FoxHerding.Handlers
         {
             Vector2 startingPos = default;
             Vector2 endingPos;
-    
             float screenRatio = (float)Screen.width / Screen.height;
             float imageWidth = transitionImageTransform.rect.width;
             float imageHeight = transitionImageTransform.rect.height;
-    
             switch (randomDirection)
             {
                 case SwipeDirection.Right: // Right
@@ -194,18 +193,17 @@ namespace FoxHerding.Handlers
                 default:
                     throw new ArgumentOutOfRangeException(nameof(randomDirection), randomDirection, null);
             }
-    
+            float distance = Vector2.Distance(startingPos, endingPos);
+            float adjustedDuration = transitionDuration * (distance / _canvasWidth); // Adjust duration based on the distance
             transitionImageTransform.anchoredPosition = startingPos;
             float timer = 0;
-    
-            while (timer < transitionDuration)
+            while (timer < adjustedDuration)
             {
                 timer += Time.deltaTime;
-                float progress = _transitionCurve.Evaluate(timer / transitionDuration);
+                float progress = _transitionCurve.Evaluate(timer / adjustedDuration);
                 transitionImageTransform.anchoredPosition = Vector2.Lerp(startingPos, endingPos, progress);
                 yield return null;
             }
-    
             transitionImageTransform.anchoredPosition = endingPos;
         }
     }
